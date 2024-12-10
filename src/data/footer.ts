@@ -1,21 +1,36 @@
-
-
-export const contactDetails = [
-    // {
-    //   src: Address,
-    //   text: "7, University road, Nsukka, Enugu Nigeria. zip 900101",
-    //   alt: "Address",
-    // },
-    { 
-      src: Telephone, 
-      text: "+234 903 954 0722", 
-      alt: "Telephone", 
-      href: "tel:+2349012345678" 
-    },
-    { 
-      src: Mail, 
-      text: "housinnafrica@gmail.com", 
-      alt: "Mail", 
-      href: "mailto:housinnafrica@gmail.com" 
-    },
-  ];
+export const links = [
+  {
+    name: "Appointment",
+    route: "/appointment",
+  },
+  {
+    name: "Services",
+    route: "/services",
+  },
+  {
+    name: "News",
+    route: "/blog",
+  },
+  {
+    name: "About us",
+    route: "aboutus",
+  },
+];
+export const contact_links = [
+  {
+    name: "Call: (237) 681-812-255",
+    route: "tel:+2348104026825",
+  },
+  {
+    name: "Email: fildineesoe@gmail.com",
+    route: "mailto:nnamaninwanne@gmail.com",
+  },
+  {
+    name: "Address: 0123 Some place",
+    route: "",
+  },
+  {
+    name: "Nigeria",
+    route: "",
+  },
+];
