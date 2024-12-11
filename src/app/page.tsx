@@ -3,11 +3,13 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Contact from "./components/Contact";
 import Appointment from "./components/Appointment";
+import HeroSection from "./components/HeroSection";
 
 export default function Home() {
   return (
     <div className="h-screen flex justify-between flex-col pb-20 gap-16 font-[family-name:var(--font-geist-sans)]">
       <Navbar />
+      <HeroSection />
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"

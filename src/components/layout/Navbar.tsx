@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { LogoMain } from "../../../public/icons";
 import { details } from "@/data/navbar";
 import Button from "../ui/Button";
@@ -18,8 +19,10 @@ const Navbar: React.FC = () => {
   return (
     <>
       <div className="flex flex-col w-full">
-        <Wrapper className="w-full flex justify-between !py-4" >
-          <Image src={LogoMain} alt="Hospital Logo" />
+        <Wrapper className="w-full flex justify-between !py-4 items-center" >
+          <Link href={'/'}>
+            <Image src={LogoMain} alt="Hospital Logo" />
+          </Link>
           <div>
             <ul className="flex gap-5">
               {details.map((item, index) => (

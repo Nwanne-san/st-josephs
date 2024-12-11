@@ -10,6 +10,9 @@ import Location2 from "./Group 178 (1).svg";
 import Mail from "./Group 202.svg";
 import Clock2 from "./Group 177 (1).svg";
 import Appointment from "./appointment-bg.svg";
+import Calender from "./39.-Calendar.svg";
+import Cash from "./15.-Cash.svg";
+import Team from "./27.-Team.svg";
 
 export {
   Clock,
@@ -24,4 +27,7 @@ export {
   Location2,
   Mail,
   Appointment,
+  Calender,
+  Cash,
+  Team,
 };
