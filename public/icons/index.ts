@@ -14,6 +14,7 @@ import Calender from "./39.-Calendar.svg";
 import Cash from "./15.-Cash.svg";
 import Team from "./27.-Team.svg";
 
+
 export {
   Clock,
   Dial,
@@ -30,4 +31,5 @@ export {
   Calender,
   Cash,
   Team,
+
 };

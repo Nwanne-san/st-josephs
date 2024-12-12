@@ -4,6 +4,7 @@ import Footer from "@/components/layout/Footer";
 import Contact from "./components/Contact";
 import Appointment from "./components/Appointment";
 import HeroSection from "./components/HeroSection";
+import Services from "./components/Services";
 
 export default function Home() {
   return (
@@ -57,6 +58,7 @@ export default function Home() {
           Go to nextjs.org →
         </a>
       </footer>
+      <Services/>
       <Appointment />
       <Contact />
       <Footer />

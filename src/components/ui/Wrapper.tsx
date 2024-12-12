@@ -5,6 +5,7 @@ interface WrapperProps {
   className?: string;
   disablePadding?: boolean; // New prop to control padding
   style?: React.CSSProperties | undefined;
+  id?: string;
 }
 
 const Wrapper: React.FC<WrapperProps> = ({
@@ -12,6 +13,7 @@ const Wrapper: React.FC<WrapperProps> = ({
   className = "",
   disablePadding = false,
   style,
+  id,
 }) => {
   return (
     <section
@@ -21,6 +23,7 @@ const Wrapper: React.FC<WrapperProps> = ({
           : " px-3 xl:px-24 sm:px-14" // Conditionally add padding
       } ${className}`}
       style={style}
+      id={id}
     >
       {children}
     </section>
