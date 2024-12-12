@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
   const router = useRouter();
 
   const ButtonClick = () => {
-    router.push("/");
+    router.push("/appointment");
   };
 
   return (

@@ -17,7 +17,7 @@ export const details = [
   {
     src: Location,
     message: "location",
-    text: " Nsukka, Enugu Nigeria. zip 900101",
+    text: " Nsukka, Enugu, Nigeria. ",
     alt: "Address",
   },
 ];
@@ -25,7 +25,7 @@ export const details = [
 export const links = [
   {
     name: "Home",
-    route: "/home",
+    route: "/",
   },
   {
     name: "About us",

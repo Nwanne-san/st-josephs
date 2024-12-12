@@ -5,7 +5,7 @@ export const contacts = [
     src: Emergency,
     name: "Emergency",
     color: "text-primary",
-    text: "+234-810-402-6825",
+    text: "+234-810-402-6999",
     bgColor: "bg-accent",
   },
   {
@@ -13,7 +13,8 @@ export const contacts = [
     name: "Location",
     color: "text-accent",
     text: "New Anglican Road",
-    bgColor: "bg-primary",
+    text2: 'Nsukka, Enugu State',
+    bgColor: "bg-primary text-accent",
   },
   {
     src: Mail,

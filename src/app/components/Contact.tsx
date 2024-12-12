@@ -20,7 +20,10 @@ const Contact: React.FC = () => {
             <p className={`${item.color} uppercase font-bold text-lg`}>
               {item.name}
             </p>
-            <span className={`${item.color} `}>{item.text}</span>
+            <div className="flex flex-col">
+              <span className={`${item.color} `}>{item.text}</span>
+              <span className={`${item.color} `}>{item?.text2}</span>
+            </div>
           </div>
         ))}
       </section>
