@@ -11,7 +11,7 @@ interface AppointmentProps {
   className?: string;
 }
 
-const Appointment: React.FC<AppointmentProps> = ({ className }) => {
+const BookAppointment: React.FC<AppointmentProps> = ({ className }) => {
   return (
     <Wrapper
       style={{ backgroundImage: "url('/icons/appointment-bg.svg')" }}
@@ -89,4 +89,4 @@ const Appointment: React.FC<AppointmentProps> = ({ className }) => {
   );
 };
 
-export default Appointment;
+export default BookAppointment;
