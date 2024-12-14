@@ -1,30 +1,20 @@
-import React from "react";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
-
-// Define map container style
-const mapContainerStyle = {
-  width: "100%",
-  height: "400px",
-};
-
-// Define default center (latitude and longitude)
-const center = {
-  lat: 40.7128, // Replace with your latitude
-  lng: -74.0060, // Replace with your longitude
-};
-
 const MapComponent = () => {
   return (
-    <LoadScript googleMapsApiKey="AIzaSyC2mEWPKVeJhWfBHpnegKt-CHIT_fKVERs"> {/* Replace with your API Key */}
-      <GoogleMap
-        mapContainerStyle={mapContainerStyle}
-        center={center}
-        zoom={12}
-      >
-        {/* Add a marker */}
-        <Marker position={center} />
-      </GoogleMap>
-    </LoadScript>
+    <div
+      style={{ width: "100%", height: "400px" }}
+      className="w-full flex justify-center items-center"
+    >
+      <iframe
+        title="Google Map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d495.16825464386824!2d7.384068685567572!3d6.849057700778539!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1044e9ae7dea5901%3A0x34900e204966a2ca!2s44B%20New%20Anglican%20Road%2C%20Nsukka!5e0!3m2!1sen!2sng!4v1734173529547!5m2!1sen!2sng"
+        width="600"
+        height="450"
+        style={{ border: 0 }}
+        allowFullScreen=""
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
   );
 };
 

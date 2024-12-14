@@ -14,6 +14,7 @@ import Appointment from "./appointment-bg.svg";
 import Calender from "./39.-Calendar.svg";
 import Cash from "./15.-Cash.svg";
 import Team from "./27.-Team.svg";
+import AboutImage from "./about-image.svg";
 
 export {
   Clock,
@@ -32,4 +33,5 @@ export {
   Cash,
   Team,
   Emergency2,
+  AboutImage,
 };
