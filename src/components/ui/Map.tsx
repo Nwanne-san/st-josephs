@@ -2,7 +2,7 @@ const MapComponent = () => {
   return (
     <div
       style={{ width: "100%", height: "400px" }}
-      className="w-full flex justify-center items-center"
+      className="w-full flex justify-center items-center my-16"
     >
       <iframe
         title="Google Map"

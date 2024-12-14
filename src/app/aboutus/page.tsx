@@ -4,6 +4,7 @@ import Hero from "@/components/ui/Herosection";
 import About from "./components/About";
 import Contact from "../components/Contact";
 import Testimonial from "./components/Testimonial";
+import Footer from "@/components/layout/Footer";
 
 const AboutUs: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const AboutUs: React.FC = () => {
       <Testimonial/>
       <Contact/>
       {/* <MapComponent/> */}
+      <Footer/>
     </div>
   );
 };

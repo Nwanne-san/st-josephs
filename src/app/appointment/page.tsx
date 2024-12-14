@@ -5,6 +5,7 @@ import MapComponent from "@/components/ui/Map";
 import BookAppointment from "../components/Appointment";
 import Schedule from "./components/Schedule";
 import Wrapper from "@/components/ui/Wrapper";
+import Footer from "@/components/layout/Footer";
 
 const Appointment: React.FC = () => {
   return (
@@ -22,6 +23,7 @@ const Appointment: React.FC = () => {
       <Wrapper>
         <MapComponent />
       </Wrapper>
+      <Footer/>
     </div>
   );
 };
