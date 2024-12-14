@@ -1,6 +1,9 @@
 import React from "react";
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/ui/Herosection";
+import About from "./components/About";
+import Contact from "../components/Contact";
+import Testimonial from "./components/Testimonial";
 
 const AboutUs: React.FC = () => {
   return (
@@ -11,7 +14,9 @@ const AboutUs: React.FC = () => {
         breadcrumbs="Home/ About"
         heading="About us"
       />
-      
+      <About/>
+      <Testimonial/>
+      <Contact/>
       {/* <MapComponent/> */}
     </div>
   );

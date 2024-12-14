@@ -26,18 +26,17 @@ const Navbar: React.FC = () => {
           <div>
             <ul className="flex gap-5">
               {details.map((item, index) => (
-                <a
+                <Link
                   href={item.href || "#"}
                   key={index}
-                  target="_blank"
                   className="flex gap-2"
                 >
                   <Image src={item.src} alt={item.alt} />
-                  <div className="flex flex-col font-medium text-base">
+                  <div className="flex flex-col font-medium text-sm xl:text-base">
                     <p className="uppercase text-primary">{item.message}</p>
                     <span className="text-secondary">{item.text}</span>
                   </div>
-                </a>
+                </Link>
               ))}
             </ul>
           </div>
@@ -45,16 +44,15 @@ const Navbar: React.FC = () => {
         <Wrapper className="w-full bg-primary flex items-center justify-between !py-4">
           <ul className="flex gap-5">
             {links.map((item, index) => (
-              <a
+              <Link
                 href={item.route || "#"}
                 key={index}
-                target="_blank"
                 className="flex gap-2"
               >
                 <p className="hover:text-accent text-white duration-200">
                   {item.name}
                 </p>
-              </a>
+              </Link>
             ))}
           </ul>
           <Button onClick={ButtonClick}>Appointment</Button>

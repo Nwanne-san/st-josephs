@@ -15,6 +15,7 @@ import Calender from "./39.-Calendar.svg";
 import Cash from "./15.-Cash.svg";
 import Team from "./27.-Team.svg";
 import AboutImage from "./about-image.svg";
+import Quote from "./Quote-vector.svg";
 
 export {
   Clock,
@@ -34,4 +35,5 @@ export {
   Team,
   Emergency2,
   AboutImage,
+  Quote,
 };

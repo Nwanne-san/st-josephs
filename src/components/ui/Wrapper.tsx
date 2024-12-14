@@ -20,7 +20,7 @@ const Wrapper: React.FC<WrapperProps> = ({
       className={` w-full ${
         disablePadding
           ? "py-2 px-3 sm:px-10 xl:px-16"
-          : " px-3 xl:px-24 sm:px-14" // Conditionally add padding
+          : " px-3 xl:px-28 sm:px-14" // Conditionally add padding
       } ${className}`}
       style={style}
       id={id}
