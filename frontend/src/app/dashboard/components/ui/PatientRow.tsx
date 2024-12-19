@@ -15,7 +15,6 @@ const PatientRow = ({
   name,
   age,
   id,
-  createdAt,
   bloodGroup,
   contactNumber,
   gender,

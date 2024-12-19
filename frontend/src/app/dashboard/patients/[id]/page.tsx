@@ -1,15 +1,15 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useRouter, useParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import Image from "next/image";
 import api from "@/services/api";
 import { Line } from "../../../../../public/icons";
 import Button from "@/components/ui/Button";
-import { Ellipsis } from "lucide-react";
+// import { Ellipsis } from "lucide-react";
 import { Patient } from "@/types";
 
 function PatientProfile() {
-  const router = useRouter();
+  // const router = useRouter();
   // const { id } = router.query; // Extract the patient ID from the route
   const params = useParams(); // Get the dynamic id from params
   const id = params.id;

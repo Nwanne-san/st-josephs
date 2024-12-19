@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useRef, FormEventHandler } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ChevronUp } from "lucide-react";
 
 interface DropdownProps {
   name: string;
-  options: string[] ;
+  options: string[];
   placeholder: string | undefined;
   className?: string;
-  onChange: (option: string) => void;  // Pass a function to handle option selection
-  selectedOption: string ;  // Receive selected option as prop
+  onChange: (option: string) => void; // Pass a function to handle option selection
+  selectedOption: string; // Receive selected option as prop
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -17,7 +17,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   placeholder,
   className,
   onChange,
-  selectedOption
+  selectedOption,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   // const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -26,7 +26,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   const toggleDropdown = () => setIsOpen((prev) => !prev);
 
   const handleOptionClick = (option: string) => {
-    onChange(option)
+    onChange(option);
     // setSelectedOption(option);
     setIsOpen(false);
   };
@@ -36,7 +36,10 @@ const Dropdown: React.FC<DropdownProps> = ({
   // };
 
   const handleClickOutside = (event: MouseEvent) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target as Node)
+    ) {
       setIsOpen(false);
     }
   };

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Ellipsis, X } from "lucide-react";
+import React, { useState } from "react";
+import { Ellipsis } from "lucide-react";
 import Link from "next/link";
 import Modal from "./Modal"; // Import Modal component
 import Dialog from "./Dialog"; // Import Dialog component

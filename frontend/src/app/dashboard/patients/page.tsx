@@ -6,10 +6,9 @@ import PatientRow from "../components/ui/PatientRow";
 import api from "@/services/api";
 import { Patient } from "@/types";
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { GridView, ListView } from "../../../../public/dashboard";
-import Dropdown from "@/components/ui/Dropdown";
 
 function PatientsPage() {
   const [patients, setPatients] = useState<Patient[]>([]);

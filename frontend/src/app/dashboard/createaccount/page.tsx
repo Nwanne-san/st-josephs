@@ -2,13 +2,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { inputFields } from "../components/FormInput"; // Assuming inputFields is imported
-import { X } from "lucide-react";
-import Dropdown from "@/components/ui/Dropdown";
+// import { X } from "lucide-react";
+// import Dropdown from "@/components/ui/Dropdown";
 
-interface FormData {
-  name: string;
-  age: string;
-}
 
 export default function PatientForm() {
   const [name, setFullName] = useState<string>("");
