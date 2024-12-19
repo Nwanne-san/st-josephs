@@ -44,7 +44,10 @@ const BookAppointment: React.FC<AppointmentProps> = ({ className }) => {
             name="gender"
             options={["Male", "Female", "Other"]}
             placeholder="Gender"
-            
+            onChange={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+            selectedOption={""}
           />
           <input
             type="email"
@@ -58,25 +61,20 @@ const BookAppointment: React.FC<AppointmentProps> = ({ className }) => {
             placeholder="Phone"
             className="px-4 py-3 placeholder:text-white bg-transparent border-b border-l border-accent"
           />
-          <Dropdown
-            name="date"
-            options={["2024-12-11", "2024-12-12"]}
+          <input
+            type="date"
+            name="doB"
+            className="px-4 py-3 placeholder:text-white bg-transparent border-b border-l border-accent"
             placeholder="Date"
           />
           <Dropdown
             name="time"
             options={["10:00 AM", "2:00 PM"]}
             placeholder="Time"
-          />
-          <Dropdown
-            name="doctor"
-            options={["Dr. Smith", "Dr. Jane"]}
-            placeholder="Doctor"
-          />
-          <Dropdown
-            name="department"
-            options={["Cardiology", "Neurology"]}
-            placeholder="Department"
+            onChange={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+            selectedOption={""}
           />
         </div>
         <textarea
