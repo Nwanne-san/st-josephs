@@ -129,7 +129,7 @@ function PatientCard({
       bloodGroup={bloodGroup}
       gender={gender}
       onClose={() => setIsEditModalOpen(false)}
-      onPatientUpdated={(updatedPatient) => {
+      onPatientUpdated={() => {
         // Update the local state or trigger a re-fetch
         setIsEditModalOpen(false);
       }}

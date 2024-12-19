@@ -13,7 +13,7 @@ const AdminDashboard: React.FC = () => {
     } else {
       setIsLoggedIn(true);
     }
-  }, []);
+  }, [router]);
 
 
   useEffect(() => {
