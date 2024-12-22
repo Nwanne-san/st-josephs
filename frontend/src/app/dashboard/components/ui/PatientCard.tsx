@@ -62,11 +62,11 @@ function PatientCard({
   };
 
   return (
-    <div className="flex flex-col h-full gap-7 px-6 py-3 shadow-xl cursor-pointer relative">
+    <div className="flex flex-col h-full gap-7 px-4 py-3 shadow-xl cursor-pointer relative rounded-md">
       <section className="flex flex-col gap-3">
         <div className="flex justify-end relative">
           <Ellipsis
-            className="cursor-pointer hover:bg-gray-300 rounded-2xl p-2 transition-colors"
+            className="cursor-pointer hover:bg-gray-300 rounded-2xl  transition-colors"
             onClick={toggleDropdown}
           />
           {isDropdownOpen && (
@@ -111,7 +111,7 @@ function PatientCard({
         <span>Contact </span>
         <span>{contactNumber}</span>
         <span>Last Visit</span>
-        <span>{new Date(createdAt).toDateString()}</span>
+        <span>{new Date(createdAt).toLocaleDateString()}</span>
       </section>
 
       {/* Edit Modal */}

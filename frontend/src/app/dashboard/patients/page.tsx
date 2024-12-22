@@ -9,6 +9,7 @@ import Image from "next/image";
 // import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { GridView, ListView } from "../../../../public/dashboard";
+import AddPatient from "../components/ui/AddPatient";
 
 function PatientsPage() {
   const [patients, setPatients] = useState<Patient[]>([]);
@@ -18,7 +19,7 @@ function PatientsPage() {
   const [sortOption, setSortOption] = useState("createdAt"); // Default sort by creation time
   const [sortOrder, setSortOrder] = useState("desc"); // Default descending
   const [currentPage, setCurrentPage] = useState(1); // For pagination
-  const itemsPerPage = 10; // Max items per page
+  const itemsPerPage = 12; // Max items per page
 
   // Fetch patients data
   useEffect(() => {
@@ -125,7 +126,7 @@ function PatientsPage() {
             src={viewMode === "grid" ? ListView : GridView}
             alt="Grid/List Icon"
             onClick={() => setViewMode(viewMode === "grid" ? "list" : "grid")}
-            className="duration-200"
+            className="duration-200 cursor-pointer"
           />
           {/* Pagination Controls */}
           <div className="flex justify-between items-center gap-2">
@@ -153,6 +154,16 @@ function PatientsPage() {
       {/* View Mode */}
       {viewMode === "grid" ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+          <AddPatient
+            age={12}
+            bloodGroup=""
+            contactNumber={1}
+            createdAt=""
+            gender=""
+            id=""
+            name=""
+            key={``}
+          />
           {paginatedPatients.map((patient) => (
             <PatientCard
               key={patient._id}

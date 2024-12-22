@@ -5,6 +5,7 @@ import ProfileIcon from "./profile-icon.svg";
 import Camera from "./Vector.svg";
 import GridView from "./grid-view.svg";
 import ListView from "./list-view.svg";
+import AddPatientIcon from "./add-patient.svg";
 
 export {
   CreateIcon,
@@ -14,4 +15,5 @@ export {
   Camera,
   GridView,
   ListView,
+  AddPatientIcon,
 };
