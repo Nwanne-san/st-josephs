@@ -20,7 +20,7 @@ const Modal: React.FC<ModalProps> = ({
           {/* Modal Header */}
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-semibold">{modalHeader}</h2>
-            <button className="p-1 text-gray-500 hover:text-gray-700" onClick={onClose}>
+            <button className="p-1 text-gray-500 hover:text-gray-700 hover:bg-gray-200 duration-200 rounded-full" onClick={onClose}>
               <X />
             </button>
           </div>

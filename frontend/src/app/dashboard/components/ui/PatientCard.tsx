@@ -4,6 +4,7 @@ import Link from "next/link";
 import Modal from "./Modal"; // Import Modal component
 import Dialog from "./Dialog"; // Import Dialog component
 import EditModal from "../../patients/components/EditModal";
+import { toast } from "sonner";
 
 interface PatientCardProps {
   name: string;
@@ -13,6 +14,8 @@ interface PatientCardProps {
   contactNumber: number;
   bloodGroup: string;
   gender: string;
+  isDisabled: boolean;
+  isLoading: boolean;
 }
 
 function PatientCard({
@@ -23,16 +26,19 @@ function PatientCard({
   contactNumber,
   bloodGroup,
   gender,
+  isDisabled,
 }: PatientCardProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+  const [loading, setLoading] = useState(false); // Loading state for delete operation
 
   const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
 
   const handleEdit = () => {
     setIsEditModalOpen(true);
     setIsDropdownOpen(false);
+    toast.success('Open')
   };
 
   const handleDelete = () => {
@@ -41,6 +47,7 @@ function PatientCard({
   };
 
   const confirmDelete = async () => {
+    setLoading(true); // Start loading state when delete begins
     try {
       console.log("Deleting patient..."); // Debugging line
       const token = localStorage.getItem("adminToken");
@@ -53,11 +60,14 @@ function PatientCard({
       if (!response.ok) {
         throw new Error("Failed to delete patient.");
       }
-      alert("Patient deleted successfully!");
+      // alert("Patient deleted successfully!");
+      toast.success("Patient deleted succesfully");
       setIsDeleteDialogOpen(false); // Close the Delete Dialog
     } catch (error) {
       console.error(error);
       alert("Failed to delete patient. Please try again.");
+    } finally {
+      setLoading(false); // Reset loading state after the process is complete
     }
   };
 
@@ -121,19 +131,19 @@ function PatientCard({
           onClose={() => setIsEditModalOpen(false)}
           modalHeader="Edit Patient"
         >
-           <EditModal
-      id={id}
-      name={name}
-      age={age}
-      contactNumber={contactNumber}
-      bloodGroup={bloodGroup}
-      gender={gender}
-      onClose={() => setIsEditModalOpen(false)}
-      onPatientUpdated={() => {
-        // Update the local state or trigger a re-fetch
-        setIsEditModalOpen(false);
-      }}
-    />
+          <EditModal
+            id={id}
+            name={name}
+            age={age}
+            contactNumber={contactNumber}
+            bloodGroup={bloodGroup}
+            gender={gender}
+            onClose={() => setIsEditModalOpen(false)}
+            onPatientUpdated={() => {
+              // Update the local state or trigger a re-fetch
+              setIsEditModalOpen(false);
+            }}
+          />
         </Modal>
       )}
 
@@ -144,6 +154,8 @@ function PatientCard({
           message="Do you really want to delete this patient?"
           onConfirm={confirmDelete}
           onCancel={() => setIsDeleteDialogOpen(false)}
+          disabled={isDisabled || loading} // Disable buttons when either disabled or loading
+          loading={loading}
         />
       )}
     </div>

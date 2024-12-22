@@ -1,23 +1,49 @@
-'use client'
-import React from "react";
+import React, { ReactNode } from "react";
+import { TailSpin } from "react-loader-spinner";
 
+// Define types for the component props
 interface ButtonProps {
-  children: React.ReactNode;
+  children?: ReactNode;
+  child?: ReactNode;
+  disabled?: boolean;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  loading?: boolean;
   className?: string;
-  onClick?: React.MouseEventHandler | undefined;
 }
 
 const Button: React.FC<ButtonProps> = ({
-  children = "",
-  className = "",
+  child,
+  children,
+  disabled,
   onClick,
+  loading,
+  className = "",
+  ...props
 }) => {
   return (
     <button
-      className={`bg-accent py-3.5 px-9 hover:bg-white duration-200 outline-none border-0 text-base font-medium text-primary hover:text-secondary rounded-full ${className} `}
+      className={`px-6 py-[11px] bg-secondary hover:bg-secondary-hover text-white rounded-md text-base font-semibold duration-150 disabled:bg-gray-400 ${className} ${
+        disabled || loading
+      }`}
       onClick={onClick}
+      disabled={disabled || loading}
+      {...props} // Spread remaining props
     >
-      {children}
+      {loading ? (
+        <div className="flex justify-center items-center gap-2 duration-500">
+          {child}
+          <TailSpin
+            visible={true}
+            height="24"
+            width="24"
+            color="#fff"
+            ariaLabel="tail-spin-loading"
+            radius="2"
+          />
+        </div>
+      ) : (
+        children
+      )}
     </button>
   );
 };

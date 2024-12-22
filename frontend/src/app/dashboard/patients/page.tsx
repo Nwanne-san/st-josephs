@@ -20,6 +20,8 @@ function PatientsPage() {
   const [sortOrder, setSortOrder] = useState("desc"); // Default descending
   const [currentPage, setCurrentPage] = useState(1); // For pagination
   const itemsPerPage = 12; // Max items per page
+  const [loading, setLoading] = useState(true); // Loading state
+
 
   // Fetch patients data
   useEffect(() => {
@@ -30,6 +32,8 @@ function PatientsPage() {
         setFilteredPatients(response.data);
       } catch (error) {
         console.error("Error fetching patients:", error);
+      } finally {
+        setLoading(false)
       }
     };
 
@@ -96,7 +100,7 @@ function PatientsPage() {
           placeholder="Search by name..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="border px-4 py-2 rounded-md w-[320px] focus:border-blue-2 duration-200"
+          className="border-[1.5px] px-4 py-2 rounded-md w-[350px] focus:border-blue-2 duration-200"
         />
 
         {/* Sort Dropdown */}
@@ -153,7 +157,7 @@ function PatientsPage() {
 
       {/* View Mode */}
       {viewMode === "grid" ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+        <div className="z-0  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 cursor-default">
           <AddPatient
             age={12}
             bloodGroup=""
@@ -174,6 +178,8 @@ function PatientsPage() {
               bloodGroup={patient.bloodGroup}
               contactNumber={patient.contactNumber}
               gender={patient.gender}
+              isDisabled={false}
+              isLoading={loading}
             />
           ))}
         </div>

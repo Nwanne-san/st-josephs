@@ -52,7 +52,7 @@ const SettingsSidebar: FC<Iproperties> = ({ className }) => {
             className={`${
               currentPath === item.id ||
               (isDashboard && item.id === "dashboard")
-                ? "bg-active text-primary-2/80 bg-accent text-white rounded-lg"
+                ? "bg-active text-primary-2/80 bg-accent text-black rounded-lg"
                 : " text-primary-2/50 hover:bg-gray-300"
             } flex uppercase cursor-pointer items-start justify-start px-5 gap-2.5 rounded-lg py-3 text-lg transition-all duration-300 ease-in md:h-auto md:w-auto md:justify-start md:rounded-sm`}
           >
