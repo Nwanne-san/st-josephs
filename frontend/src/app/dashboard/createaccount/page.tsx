@@ -5,14 +5,16 @@ import { inputFields } from "../components/FormInput"; // Assuming inputFields i
 // import { X } from "lucide-react";
 // import Dropdown from "@/components/ui/Dropdown";
 
-
 export default function PatientForm() {
   const [name, setFullName] = useState<string>("");
+  const [surname, setSurname] = useState<string>("");
   const [age, setAge] = useState<string>("");
   const [errors, setErrors] = useState<string | null>(null);
   const [bloodGroup, setBloodGroup] = useState("");
   const [doB, setDoB] = useState("");
   const [gender, setGender] = useState("");
+  const [address, setAddress] = useState("");
+  const [homeTown, setHomeTown] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   // const [admissionDate, setAdmissionDate] = useState("");
 
@@ -23,14 +25,25 @@ export default function PatientForm() {
     const { name, value } = e.target;
 
     switch (name) {
+      case "surname":
+        setSurname(value);
+        break;
       case "name":
         setFullName(value);
         break;
       case "age":
         setAge(value);
         break;
+        
       case "bloodGroup":
         setBloodGroup(value);
+        break;
+        
+      case "address":
+        setAddress(value);
+        break;
+      case "homeTown":
+        setHomeTown(value);
         break;
       case "doB":
         setDoB(value);
@@ -51,15 +64,18 @@ export default function PatientForm() {
     const token = localStorage.getItem("adminToken");
 
     try {
-const response = await axios.post(
+      const response = await axios.post(
         "http://localhost:5000/api/patients", // API endpoint
         {
+          surname,
           name,
           age,
           bloodGroup,
           doB: new Date(doB).getTime(), // If using a date input, conve
           gender,
           contactNumber,
+          address,
+          homeTown,
           // createdBy: 'someUserId',
         },
         {
@@ -69,7 +85,7 @@ const response = await axios.post(
           },
         }
       );
-      console.log(response.data)
+      console.log(response.data);
 
       alert("Patient created successfully!");
       setErrors(null);
@@ -94,28 +110,40 @@ const response = await axios.post(
                 placeholder={field.placeholder}
               />
             ) : ( */}
-              {field.name === "doB" ? (
+            {field.name === "doB" ? (
               <input
                 type="date"
                 name="doB"
-                value={doB}  // Set the value of doB as a date string
+                value={doB} // Set the value of doB as a date string
                 onChange={handleChange}
-                className="border p-2 w-full"
-                placeholder={field.placeholder}
+                className={`border p-2 w-full rounded-lg ${field.className}`}
+                // placeholder={field.placeholder}
               />
             ) : (
               <input
                 type={field.type}
                 name={field.name}
                 value={
-                  field.name === "name" ? name :
-                  field.name === "age" ? age :
-                  field.name === "bloodGroup" ? bloodGroup :
-                  field.name === "gender" ? gender :
-                  field.name === "contactNumber" ? contactNumber : ""
+                  field.name === "surname"
+                    ? surname :
+                  field.name === "name"
+                    ? name
+                    : field.name === "age"
+                    ? age
+                    : field.name === "bloodGroup"
+                    ? bloodGroup
+                    : field.name === "gender"
+                    ? gender
+                    : field.name === "address"
+                    ? address
+                    : field.name === "homeTown"
+                    ? homeTown
+                    : field.name === "contactNumber"
+                    ? contactNumber
+                    : ""
                 }
                 onChange={handleChange}
-                className="border p-2 w-full"
+                className={`border p-2 w-full rounded-lg hover:bg-gray-100 ${field.className} `}
                 placeholder={field.placeholder}
               />
             )}

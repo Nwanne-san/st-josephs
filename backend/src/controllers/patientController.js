@@ -28,13 +28,13 @@ const getPatientById = async (req, res) => {
 // POST add new patient
 const addPatient = async (req, res) => {
     try {
-        const { name, age, doB, gender, bloodGroup, contactNumber   } = req.body;
+        const { name, age, doB, gender, bloodGroup, contactNumber, surname, homeTown, address   } = req.body;
 
-        if (!name || !age) {
+        if (!name || !age || !surname ) {
             return res.status(400).json({ error: 'All fields are required' });
         }
 
-        const patient = new Patient({ name, age, doB, gender, bloodGroup, contactNumber });
+        const patient = new Patient({ name, age, doB, gender, bloodGroup, contactNumber, surname, homeTown, address });
         console.log(patient)
         await patient.save();
 

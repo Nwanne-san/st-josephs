@@ -33,19 +33,14 @@ function PatientProfile() {
   if (!patient) return <p>Loading...</p>;
 
   return (
-    // <div className="p-6">
-    //   <h1 className="text-2xl font-bold">{patient.name}'s Profile</h1>
-    //   <p>Age: {patient.age} years</p>
-    //   <p>Patient ID: {patient._id}</p>
-    //   <p>Joined On: {new Date(patient.createdAt).toDateString()}</p>
-    //   {/* Add more details here */}
-    // </div>
     <div className="flex flex-col w-full">
       <section className="px-8 rounded-lg shadow-xl flex gap-6 xl:gap-14 w-">
         <div className="flex flex-col items-center  xl:pl-6">
           <span className="w-[100px] h-[100px] rounded-full border-8 border-gray-2"></span>
           <div className="flex flex-col items-center">
-            <p className="xl:text-xl">{patient.name} </p>
+            <p className="xl:text-xl">
+              {patient.surname} {patient.name}{" "}
+            </p>
             <p className="text-gray-2 ">
               {" "}
               {patient?.age} yrs | {patient?.gender}
@@ -62,6 +57,14 @@ function PatientProfile() {
           <div className="flex justify-around w-full items-center px-4 text-lg text-nowrap">
             <span className="flex justify-start">Contact Number</span>
             <span>{patient.contactNumber}</span>
+          </div>
+          <div className="flex justify-around w-full items-center px-4 text-lg text-nowrap">
+            <span className="flex justify-start">Address</span>
+            <span>{patient.address}</span>
+          </div>
+          <div className="flex justify-around w-full items-center px-4 text-lg text-nowrap">
+            <span className="flex justify-start">Home Town</span>
+            <span>{patient.homeTown}</span>
           </div>
           <div className="flex justify-around w-full items-center px-4 text-lg text-nowrap">
             <span>Height</span>

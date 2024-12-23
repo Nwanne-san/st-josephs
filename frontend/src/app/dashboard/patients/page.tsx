@@ -91,9 +91,7 @@ function PatientsPage() {
 
   return (
     <div className="p-6">
-      {/* Header */}
       <div className="flex flex-wrap justify-between items-center mb-6">
-        {/* Search Input */}
         <input
           type="text"
           placeholder="Search by name..."
@@ -170,9 +168,12 @@ function PatientsPage() {
           {paginatedPatients.map((patient) => (
             <PatientCard
               key={patient._id}
+              surname={patient.surname}
               name={patient.name}
               age={patient.age}
               id={patient._id}
+              homeTown={patient.homeTown}
+              address={patient.address}
               createdAt={patient.createdAt}
               bloodGroup={patient.bloodGroup}
               contactNumber={patient.contactNumber}

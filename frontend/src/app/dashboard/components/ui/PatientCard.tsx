@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Ellipsis } from "lucide-react";
 import Link from "next/link";
-import Modal from "./Modal"; // Import Modal component
-import Dialog from "./Dialog"; // Import Dialog component
+import Modal from "./Modal";
+import Dialog from "./Dialog";
 import EditModal from "../../patients/components/EditModal";
 import { toast } from "sonner";
 
@@ -14,17 +14,23 @@ interface PatientCardProps {
   contactNumber: number;
   bloodGroup: string;
   gender: string;
+  address: string;
+  surname: string;
+  homeTown: string;
   isDisabled: boolean;
   isLoading: boolean;
 }
 
 function PatientCard({
+  surname,
   name,
   age,
   id,
   createdAt,
   contactNumber,
   bloodGroup,
+  address,
+  homeTown,
   gender,
   isDisabled,
 }: PatientCardProps) {
@@ -38,7 +44,7 @@ function PatientCard({
   const handleEdit = () => {
     setIsEditModalOpen(true);
     setIsDropdownOpen(false);
-    toast.success('Open')
+    toast.success("Open");
   };
 
   const handleDelete = () => {
@@ -104,7 +110,9 @@ function PatientCard({
             <span className="w-9 h-9 rounded-full bg-gray-300"></span>
             <div className="flex flex-col">
               <div className="font-bold ">
-                <p className="font-bold text-nowrap ">{name}</p>
+                <p className="font-bold text-nowrap ">
+                  {surname}<span> {name}</span>
+                </p>
                 <p className="text-[10px] text-gray-400 ">#{id.slice(-6)}</p>
               </div>
               <p className="text-[10px] pt-0.5">
@@ -133,11 +141,14 @@ function PatientCard({
         >
           <EditModal
             id={id}
+            surname={surname}
             name={name}
             age={age}
             contactNumber={contactNumber}
             bloodGroup={bloodGroup}
             gender={gender}
+            address={address}
+            homeTown={homeTown}
             onClose={() => setIsEditModalOpen(false)}
             onPatientUpdated={() => {
               // Update the local state or trigger a re-fetch

@@ -1,43 +1,58 @@
 // EditModal Component
 import React, { useState } from "react";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 interface EditModalProps {
   id: string;
+  surname: string;
   name: string;
   age: number;
   contactNumber: number;
   bloodGroup: string;
   gender: string;
+  address: string;
+  homeTown: string;
   onClose: () => void;
   onPatientUpdated: (updatedPatient: {
+    surname: string;
     name: string;
     age: number;
     contactNumber: number;
     bloodGroup: string;
+    address: string;
+    homeTown: string;
     gender: string;
   }) => void;
 }
 
 const EditModal = ({
   id,
+  surname: initialSurname,
   name: initialName,
   age: initialAge,
   contactNumber: initialContactNumber,
   bloodGroup: initialBloodGroup,
   gender: initialGender,
+  address: initialAddress,
+  homeTown: initialHomeTown,
   onClose,
   onPatientUpdated,
 }: EditModalProps) => {
+  const [surname, setSurname] = useState(initialSurname);
   const [name, setName] = useState(initialName);
   const [age, setAge] = useState(initialAge);
   const [contactNumber, setContactNumber] = useState(initialContactNumber);
   const [bloodGroup, setBloodGroup] = useState(initialBloodGroup);
   const [gender, setGender] = useState(initialGender);
+  const [address, setAddress] = useState(initialAddress);
+  const [homeTown, setHomeTown] = useState(initialHomeTown);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
     try {
       const token = localStorage.getItem("adminToken");
@@ -47,7 +62,16 @@ const EditModal = ({
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ name, age, contactNumber, bloodGroup, gender }),
+        body: JSON.stringify({
+          surname,
+          name,
+          age,
+          contactNumber,
+          bloodGroup,
+          gender,
+          address,
+          homeTown,
+        }),
       });
 
       if (!response.ok) {
@@ -56,47 +80,67 @@ const EditModal = ({
 
       const updatedPatient = await response.json();
       onPatientUpdated(updatedPatient);
-      alert("Patient updated successfully!");
+      toast.success("Patient updated successfully!");
+      setIsSubmitting(true);
+      setTimeout(() => {
+        window.location.reload(); // or router.reload() for Next.js
+      }, 2000);
     } catch (error) {
       console.error(error);
       alert("Failed to update patient. Please try again.");
     } finally {
       setIsSubmitting(false);
       onClose();
+      router.refresh();
+
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <div>
-        <label className="block text-sm font-medium">Name</label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="w-full px-4 py-2 border rounded-lg"
-          required
-        />
+      <div className="flex gap-4">
+        <div>
+          <label className="block text-sm font-medium">Name</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full px-4 py-2 border rounded-lg"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium">Surname</label>
+          <input
+            type="text"
+            value={surname}
+            onChange={(e) => setSurname(e.target.value)}
+            className="w-full px-4 py-2 border rounded-lg"
+            required
+          />
+        </div>
       </div>
-      <div>
-        <label className="block text-sm font-medium">Age</label>
-        <input
-          type="number"
-          value={age}
-          onChange={(e) => setAge(parseInt(e.target.value) || 0)}
-          className="w-full px-4 py-2 border rounded-lg"
-          required
-        />
-      </div>
-      <div>
-        <label className="block text-sm font-medium">Contact Number</label>
-        <input
-          type="number"
-          value={contactNumber}
-          onChange={(e) => setContactNumber(parseInt(e.target.value) || 0)}
-          className="w-full px-4 py-2 border rounded-lg"
-          required
-        />
+      <div className="flex gap-4">
+        <div>
+          <label className="block text-sm font-medium">Age</label>
+          <input
+            type="number"
+            value={age}
+            onChange={(e) => setAge(parseInt(e.target.value) || 0)}
+            className="w-full px-4 py-2 border rounded-lg"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium">Contact Number</label>
+          <input
+            type="number"
+            value={contactNumber}
+            onChange={(e) => setContactNumber(parseInt(e.target.value) || 0)}
+            className="w-full px-4 py-2 border rounded-lg"
+            required
+          />
+        </div>
       </div>
       <div>
         <label className="block text-sm font-medium">Blood Group</label>
@@ -104,6 +148,26 @@ const EditModal = ({
           type="text"
           value={bloodGroup}
           onChange={(e) => setBloodGroup(e.target.value)}
+          className="w-full px-4 py-2 border rounded-lg"
+          required
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium">Address</label>
+        <input
+          type="text"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+          className="w-full px-4 py-2 border rounded-lg"
+          required
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium">Home Town</label>
+        <input
+          type="text"
+          value={homeTown}
+          onChange={(e) => setHomeTown(e.target.value)}
           className="w-full px-4 py-2 border rounded-lg"
           required
         />
