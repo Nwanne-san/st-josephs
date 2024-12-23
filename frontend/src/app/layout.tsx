@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import {Work_Sans} from 'next/font/google'
+import { Work_Sans } from "next/font/google";
+import { ContactProvider } from "@/context/createContext";
+import { Toaster } from "sonner";
 import "./globals.css";
 
-const workSans = Work_Sans({subsets: ['latin']})
+const workSans = Work_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,10 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${workSans.className} antialiased`}
-      >
-        {children}
+      <body className={`${workSans.className} antialiased`}>
+        <ContactProvider>{children}</ContactProvider>
+        <Toaster position="top-right" expand={false} richColors />
       </body>
     </html>
   );

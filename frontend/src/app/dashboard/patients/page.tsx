@@ -22,7 +22,6 @@ function PatientsPage() {
   const itemsPerPage = 12; // Max items per page
   const [loading, setLoading] = useState(true); // Loading state
 
-
   // Fetch patients data
   useEffect(() => {
     const fetchPatients = async () => {
@@ -33,7 +32,7 @@ function PatientsPage() {
       } catch (error) {
         console.error("Error fetching patients:", error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     };
 

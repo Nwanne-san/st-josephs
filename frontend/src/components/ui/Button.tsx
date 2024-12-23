@@ -18,7 +18,6 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   loading,
   className = "",
-  ...props
 }) => {
   return (
     <button
@@ -27,7 +26,6 @@ const Button: React.FC<ButtonProps> = ({
       }`}
       onClick={onClick}
       disabled={disabled || loading}
-      {...props} // Spread remaining props
     >
       {loading ? (
         <div className="flex justify-center items-center gap-2 duration-500">
