@@ -10,12 +10,13 @@ const AdminLogin = () => {
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [error, setError] = useState("");
+  const [loginError, setLoginError] = useState("");
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await api.post("/api/admin/login", {
+      const res = await api.post("/admin/login", {
         username,
         password,
       });
@@ -29,7 +30,7 @@ const AdminLogin = () => {
       const { token } = res.data;
       document.cookie = `token=${token}; path=/`;
     } catch {
-      setError("Login failed sir");
+      setLoginError("Login failed sir");
     }
   };
 
@@ -103,7 +104,7 @@ const AdminLogin = () => {
         className="bg-white p-6 rounded shadow-md w-80"
       >
         <h2 className="text-xl font-semibold mb-4 text-center">Admin Login</h2>
-        {error && <p className="text-red-500 text-sm">{error}</p>}
+        {loginError && <p className="text-red-500 text-sm">{error}</p>}
         <div className="mb-4">
           <label className="block text-sm mb-1">Username</label>
           <input

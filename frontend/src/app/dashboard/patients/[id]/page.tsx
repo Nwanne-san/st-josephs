@@ -7,6 +7,7 @@ import { Line } from "../../../../../public/icons";
 import Button from "@/components/ui/Button";
 // import { Ellipsis } from "lucide-react";
 import { Patient } from "@/types";
+import { info } from "@/data/info";
 
 function PatientProfile() {
   // const router = useRouter();
@@ -34,8 +35,8 @@ function PatientProfile() {
 
   return (
     <div className="flex flex-col w-full">
-      <section className="px-8 rounded-lg shadow-xl flex gap-6 xl:gap-14 w-">
-        <div className="flex flex-col items-center  xl:pl-6">
+      <section className="px-8 rounded-lg shadow-xl flex gap-6 xl:gap-14 items-center">
+        <div className="flex flex-col items-center text-nowrap xl:pl-6">
           <span className="w-[100px] h-[100px] rounded-full border-8 border-gray-2"></span>
           <div className="flex flex-col items-center">
             <p className="xl:text-xl">
@@ -49,7 +50,7 @@ function PatientProfile() {
           <p className="text-lg">{patient.id}</p>
         </div>
         <Image src={Line} alt="" />
-        <div className="flex flex-col item-center gap-2 w-full">
+        {/* <div className="flex flex-col item-center gap-2 w-full">
           <div className="flex justify-around w-full items-center px-4 text-lg text-nowrap">
             <span className="flex justify-start">Blood Group</span>
             <span>{patient.bloodGroup}</span>
@@ -74,10 +75,24 @@ function PatientProfile() {
             <span>Weight</span>
             <span>80kg</span>
           </div>
-        </div>
+        </div> */}
+        <section className="flex gap-14 w-full px-4 items-center justify-evenly">
+          <div className="flex flex-col gap-2">
+            {info.map((info, index) => (
+              <p key={index}>{info.name} </p>
+            ))}
+          </div>
+          <div className="flex flex-col gap-2">
+            <p> {patient.bloodGroup}</p>
+            <p> {patient.contactNumber}</p>
+            <p> 170cm</p>
+            <p>79 kg</p>
+            <p> {patient.bloodGroup}</p>
+          </div>
+        </section>
         <Image src={Line} alt="" />
         <div className="flex justify-center h-full items-center">
-          <Button className="shadow-lg !rounded-md ">
+          <Button className="shadow-lg !rounded-md text-nowrap flex items-center">
             Create Consultation
           </Button>
         </div>
