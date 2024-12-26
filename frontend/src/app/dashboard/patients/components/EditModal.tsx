@@ -1,10 +1,9 @@
-// EditModal Component
 import React, { useState } from "react";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 
 interface EditModalProps {
-  id: string;
+  id: string | string[];
   surname: string;
   name: string;
   age: number;
@@ -15,6 +14,8 @@ interface EditModalProps {
   homeTown: string;
   onClose: () => void;
   onPatientUpdated: (updatedPatient: {
+    id: string;
+    _id: string;
     surname: string;
     name: string;
     age: number;
@@ -23,6 +24,7 @@ interface EditModalProps {
     address: string;
     homeTown: string;
     gender: string;
+    createdAt: Date;
   }) => void;
 }
 
@@ -49,7 +51,7 @@ const EditModal = ({
   const [homeTown, setHomeTown] = useState(initialHomeTown);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const router = useRouter();
+  // const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -82,17 +84,16 @@ const EditModal = ({
       onPatientUpdated(updatedPatient);
       toast.success("Patient updated successfully!");
       setIsSubmitting(true);
-      setTimeout(() => {
-        window.location.reload(); // or router.reload() for Next.js
-      }, 2000);
+      // setTimeout(() => {
+      //   window.location.reload(); // or router.reload() for Next.js
+      // }, 2000);
     } catch (error) {
       console.error(error);
-      alert("Failed to update patient. Please try again.");
+      toast.error("Failed to update patient. Please try again.");
     } finally {
       setIsSubmitting(false);
       onClose();
-      router.refresh();
-
+      // router.refresh();
     }
   };
 

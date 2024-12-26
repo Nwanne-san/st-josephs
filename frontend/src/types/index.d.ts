@@ -1,14 +1,29 @@
 export interface Patient {
-    surname: ReactNode;
-    id: ReactNode;
-    _id: string;
+  id: string;
+  _id: string;
+  surname: string;
+  name: string;
+  age: number;
+  contactNumber: number;
+  bloodGroup: string;
+  address: string;
+  homeTown: string;
+  gender: string;
+  createdAt: Date;
+}
+
+  export interface PatientCardProps {
     name: string;
     age: number;
-    gender: string;
-    bloodGroup: string;
+    id: string  | string[];
+    createdAt: Date;
     contactNumber: number;
-    createdAt: string;
+    bloodGroup: string;
+    gender: string;
     address: string;
+    surname: string;
     homeTown: string;
+    isDisabled: boolean;
+    isLoading: boolean;
   }
   

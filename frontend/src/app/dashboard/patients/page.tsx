@@ -19,11 +19,13 @@ function PatientsPage() {
   const [sortOption, setSortOption] = useState("createdAt"); // Default sort by creation time
   const [sortOrder, setSortOrder] = useState("desc"); // Default descending
   const [currentPage, setCurrentPage] = useState(1); // For pagination
-  const itemsPerPage = 12; // Max items per page
+  const itemsPerPage = 11; // Max items per page
   const [loading, setLoading] = useState(true); // Loading state
 
   // Fetch patients data
   useEffect(() => {
+    const token = localStorage.getItem("adminToken");
+
     const fetchPatients = async () => {
       try {
         const response = await api.get("/patients");
@@ -36,7 +38,7 @@ function PatientsPage() {
       }
     };
 
-    fetchPatients();
+    if (token) fetchPatients();
   }, []);
 
   // Filter and sort patients

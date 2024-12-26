@@ -34,11 +34,11 @@ export default function PatientForm() {
       case "age":
         setAge(value);
         break;
-        
+
       case "bloodGroup":
         setBloodGroup(value);
         break;
-        
+
       case "address":
         setAddress(value);
         break;
@@ -125,8 +125,8 @@ export default function PatientForm() {
                 name={field.name}
                 value={
                   field.name === "surname"
-                    ? surname :
-                  field.name === "name"
+                    ? surname
+                    : field.name === "name"
                     ? name
                     : field.name === "age"
                     ? age

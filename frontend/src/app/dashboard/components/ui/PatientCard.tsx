@@ -1,25 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Ellipsis } from "lucide-react";
 import Link from "next/link";
 import Modal from "./Modal";
 import Dialog from "./Dialog";
 import EditModal from "../../patients/components/EditModal";
 import { toast } from "sonner";
-
-interface PatientCardProps {
-  name: string;
-  age: number;
-  id: string;
-  createdAt: string;
-  contactNumber: number;
-  bloodGroup: string;
-  gender: string;
-  address: string;
-  surname: string;
-  homeTown: string;
-  isDisabled: boolean;
-  isLoading: boolean;
-}
+import { PatientCardProps } from "@/types";
 
 function PatientCard({
   surname,
@@ -38,8 +24,31 @@ function PatientCard({
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
   const [loading, setLoading] = useState(false); // Loading state for delete operation
+  const dropdownRef = useRef<HTMLDivElement | null>(null); // Reference for the dropdown
 
   const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
+
+  const handleClickOutside = (event: MouseEvent) => {
+    // Close the dropdown if the click is outside the dropdown
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target as Node)
+    ) {
+      setIsDropdownOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isDropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isDropdownOpen]);
 
   const handleEdit = () => {
     setIsEditModalOpen(true);
@@ -87,6 +96,7 @@ function PatientCard({
           />
           {isDropdownOpen && (
             <div
+              ref={dropdownRef}
               className="absolute top-full right-0 mt-2 w-32 bg-white shadow-md rounded-lg border border-gray-200 z-50"
               // Prevent closing when clicking inside the popup
             >
@@ -111,7 +121,8 @@ function PatientCard({
             <div className="flex flex-col">
               <div className="font-bold ">
                 <p className="font-bold text-nowrap ">
-                  {surname}<span> {name}</span>
+                  {surname}
+                  <span> {name}</span>
                 </p>
                 <p className="text-[10px] text-gray-400 ">#{id.slice(-6)}</p>
               </div>

@@ -15,8 +15,8 @@ const Contact: React.FC = () => {
         heading="Our Contacts"
       />
       <MapComponent />
-      <ContactUs/>
-      <Footer/>
+      <ContactUs />
+      <Footer />
     </>
   );
 };

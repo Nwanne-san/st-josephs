@@ -13,7 +13,7 @@ export const contacts = [
     name: "Location",
     color: "text-accent",
     text: "New Anglican Road",
-    text2: 'Nsukka, Enugu State',
+    text2: "Nsukka, Enugu State",
     bgColor: "bg-primary text-accent",
   },
   {

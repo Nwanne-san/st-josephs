@@ -30,7 +30,7 @@ export const inputFields = [
     label: "Date of Birth",
     name: "doB",
     type: "date",
-    placeholder: ''
+    placeholder: "",
   },
   {
     id: "bloodGroup",
