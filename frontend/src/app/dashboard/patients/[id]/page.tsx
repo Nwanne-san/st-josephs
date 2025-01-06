@@ -14,10 +14,15 @@ import Modal from "../../components/ui/Modal";
 import EditModal from "../components/EditModal";
 
 function PatientProfile() {
+  // const router = useRouter();
+  // const { id } = router.query; // Extract the patient ID from the route
   const params = useParams(); // Get the dynamic id from params
-  const userId = params.id as string;
+  const id = params.id;
+  console.log(id);
+  const userId = params.id;
   console.log(userId);
-  const [patient, setPatient] = useState<Patient | null>(null);
+  console.log(userId);
+  const [patient, setPatient] = useState<Patient>();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);

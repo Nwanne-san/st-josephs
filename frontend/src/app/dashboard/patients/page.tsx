@@ -30,6 +30,7 @@ function PatientsPage() {
       try {
         const response = await api.get("/patients");
         setPatients(response.data);
+        console.log(response.data);
         setFilteredPatients(response.data);
       } catch (error) {
         console.error("Error fetching patients:", error);
@@ -203,7 +204,7 @@ function PatientsPage() {
             contactNumber={1}
             gender=""
             name=""
-            key={1}
+            key={``}
           />
           {paginatedPatients.map((patient) => (
             <PatientCard
@@ -218,8 +219,9 @@ function PatientsPage() {
               bloodGroup={patient.bloodGroup}
               contactNumber={patient.contactNumber}
               gender={patient.gender}
-              isDisabled={false}
+              // isDisabled={false}
               isLoading={loading}
+              _id={patient._id}
             />
           ))}
         </div>

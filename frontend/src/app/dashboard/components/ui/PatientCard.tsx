@@ -11,14 +11,14 @@ function PatientCard({
   surname,
   name,
   age,
-  id,
+  _id,
   createdAt,
   contactNumber,
   bloodGroup,
   address,
   homeTown,
   gender,
-  isDisabled,
+  
 }: Patient) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -67,7 +67,7 @@ function PatientCard({
       console.log("Deleting patient..."); // Debugging line
       const token = localStorage.getItem("adminToken");
       const response = await fetch(
-        `http://localhost:5000/api/patients/${id}`,
+        `http://localhost:5000/api/patients/${_id}`,
         {
           method: "DELETE",
           headers: {
@@ -88,7 +88,7 @@ function PatientCard({
       setLoading(false); // Reset loading state after the process is complete
     }
   };
-
+console.log(_id)
   return (
     <div className="flex flex-col h-full gap-7 px-4 py-3 shadow-xl cursor-pointer relative rounded-md">
       <section className="flex flex-col gap-3">
@@ -118,7 +118,7 @@ function PatientCard({
             </div>
           )}
         </div>
-        <Link href={`/dashboard/patients/${id}`} className="block">
+        <Link href={`/dashboard/patients/${_id}`} className="block">
           <div className="flex gap-2 items-center">
             <span className="w-9 h-9 rounded-full bg-gray-300"></span>
             <div className="flex flex-col">
@@ -127,7 +127,7 @@ function PatientCard({
                   {surname}
                   <span> {name}</span>
                 </p>
-                <p className="text-[10px] text-gray-400 ">#</p>
+                <p className="text-[10px] text-gray-400 ">#{_id}</p>
               </div>
               <p className="text-[10px] pt-0.5">
                 {age} yrs | {gender}
@@ -154,7 +154,7 @@ function PatientCard({
           modalHeader="Edit Patient"
         >
           <EditModal
-            id={id}
+            id={_id}
             surname={surname}
             name={name}
             age={age}
@@ -179,7 +179,7 @@ function PatientCard({
           message="Do you really want to delete this patient?"
           onConfirm={confirmDelete}
           onCancel={() => setIsDeleteDialogOpen(false)}
-          disabled={isDisabled || loading} // Disable buttons when either disabled or loading
+          // disabled={ || loading} // Disable buttons when either disabled or loading
           loading={loading}
         />
       )}

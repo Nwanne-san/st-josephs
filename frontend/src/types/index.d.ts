@@ -1,6 +1,6 @@
 export interface Patient {
   id: string;
-  // _id: string;
+  _id: string;
   surname: string;
   name: string;
   age: number;
@@ -17,7 +17,7 @@ export interface Patient {
 export interface PatientCardProps {
   name: string;
   age: number;
-  _id: string | string[];
+  id: string | string[];
   createdAt: Date;
   contactNumber: number;
   bloodGroup: string;

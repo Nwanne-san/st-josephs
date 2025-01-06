@@ -16,7 +16,7 @@ interface EditModalProps {
   onClose: () => void;
   onPatientUpdated: (updatedPatient: {
     id: string;
-    // _id: string;
+    _id: string;
     surname: string;
     name: string;
     age: number;
