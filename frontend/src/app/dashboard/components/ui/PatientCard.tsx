@@ -5,7 +5,7 @@ import Modal from "./Modal";
 import Dialog from "./Dialog";
 import EditModal from "../../patients/components/EditModal";
 import { toast } from "sonner";
-import { PatientCardProps } from "@/types";
+import { Patient } from "@/types";
 
 function PatientCard({
   surname,
@@ -19,7 +19,7 @@ function PatientCard({
   homeTown,
   gender,
   isDisabled,
-}: PatientCardProps) {
+}: Patient) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
@@ -66,12 +66,15 @@ function PatientCard({
     try {
       console.log("Deleting patient..."); // Debugging line
       const token = localStorage.getItem("adminToken");
-      const response = await fetch(`http://localhost:5000/api/patients/${id}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        `http://localhost:5000/api/patients/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       if (!response.ok) {
         throw new Error("Failed to delete patient.");
       }
@@ -124,7 +127,7 @@ function PatientCard({
                   {surname}
                   <span> {name}</span>
                 </p>
-                <p className="text-[10px] text-gray-400 ">#{id.slice(-6)}</p>
+                <p className="text-[10px] text-gray-400 ">#</p>
               </div>
               <p className="text-[10px] pt-0.5">
                 {age} yrs | {gender}

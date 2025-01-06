@@ -4,7 +4,7 @@ import Link from "next/link";
 interface PatientRowProps {
   name: string;
   age: number;
-  id: string;
+  _id: string;
   createdAt?: string;
   contactNumber: number;
   bloodGroup: string;
@@ -14,7 +14,7 @@ interface PatientRowProps {
 const PatientRow = ({
   name,
   age,
-  id,
+  _id,
   bloodGroup,
   contactNumber,
   gender,
@@ -22,15 +22,15 @@ const PatientRow = ({
   return (
     <tr className="border-b hover:bg-gray-100">
       <td className="px-4 py-2">
-        <Link href={`/dashboard/patients/${id}`} className=" hover:underline">
+        <Link href={`/dashboard/patients/${_id}`} className=" hover:underline">
           {name}
         </Link>
       </td>
-      <td className="px-4 py-2">{id}</td>
+      <td className="px-4 py-2">{_id}</td>
       <td className="px-4 py-2">{age}</td>
       <td className="px-4 py-2">{gender}</td>
       <td className="px-4 py-2">{contactNumber}</td>
-      <td className="px-4 py-2">{bloodGroup}</td>
+      <td className="px-4 py-2">{bloodGroup} ve</td>
       {/* <td className="px-4 py-2 text-gray-500">{new Date(createdAt).toLocaleDateString()}</td> */}
     </tr>
   );

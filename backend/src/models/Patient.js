@@ -8,7 +8,7 @@ const patientSchema = new mongoose.Schema({
   gender: { type: String, required: true },
   bloodGroup: { type: String, required: true },
   address: { type: String, required: true },
-  contactNumber: { type: Number, required: true },
+  contactNumber: { type: String, required: true },
   homeTown: {type: String, required: true},
 
   // createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },

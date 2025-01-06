@@ -7,8 +7,8 @@ import Button from "@/components/ui/Button";
 interface AddPatientProps {
   name: string;
   age: number;
-  id: string;
-  createdAt: string;
+  // id: string;
+  // createdAt: string;
   contactNumber: number;
   bloodGroup: string;
   gender: string;

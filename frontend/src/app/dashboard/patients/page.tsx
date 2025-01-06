@@ -6,17 +6,17 @@ import PatientRow from "../components/ui/PatientRow";
 import api from "@/services/api";
 import { Patient } from "@/types";
 import Image from "next/image";
-// import Link from "next/link";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ChevronUp } from "lucide-react";
 import { GridView, ListView } from "../../../../public/dashboard";
 import AddPatient from "../components/ui/AddPatient";
+import Dropdown from "@/components/ui/Dropdown";
 
 function PatientsPage() {
   const [patients, setPatients] = useState<Patient[]>([]);
   const [filteredPatients, setFilteredPatients] = useState<Patient[]>([]);
   const [viewMode, setViewMode] = useState("grid"); // "grid" or "list"
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortOption, setSortOption] = useState("createdAt"); // Default sort by creation time
+  const [sortOption, setSortOption] = useState("createdAt"); // Default sort
   const [sortOrder, setSortOrder] = useState("desc"); // Default descending
   const [currentPage, setCurrentPage] = useState(1); // For pagination
   const itemsPerPage = 11; // Max items per page
@@ -41,6 +41,41 @@ function PatientsPage() {
     if (token) fetchPatients();
   }, []);
 
+  // Reset all filters
+  const resetFilters = () => {
+    setSortOption("createdAt");
+    setSortOrder("desc");
+    setSearchQuery("");
+  };
+
+  // Handle dropdown filters
+  const handleSortChange = (option: string) => {
+    resetFilters(); // Nullify table heading filters
+    switch (option) {
+      case "Recent":
+        setSortOption("createdAt");
+        break;
+      case "Age":
+        setSortOption("age");
+        break;
+      case "Gender":
+        setSortOption("gender");
+        setSortOrder("asc"); // Male first for dropdown
+        break;
+      case "Name":
+        setSortOption("name");
+        break;
+      case "Blood Group":
+        setSortOption("bloodGroup");
+        setSortOrder("asc");
+        break;
+      default:
+        setSortOption("createdAt");
+    }
+  };
+
+  // Sort blood groups based on the specific order
+
   // Filter and sort patients
   useEffect(() => {
     let updatedPatients = [...patients];
@@ -51,8 +86,12 @@ function PatientsPage() {
         patient.name.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
+    const bloodGroupOrder = ["A-", "A+", "B-", "B+", "AB-", "AB+", "O-", "O+"];
 
-    // Sort by selected option
+    const sortBloodGroups = (a: string, b: string) => {
+      return bloodGroupOrder.indexOf(a) - bloodGroupOrder.indexOf(b);
+    };
+    // Sort based on selected option
     switch (sortOption) {
       case "age":
         updatedPatients.sort((a, b) =>
@@ -60,13 +99,27 @@ function PatientsPage() {
         );
         break;
 
-      //   case "gender":
-      //     updatedPatients.sort((a, b) => a.gender.localeCompare(b.gender));
-      //     break;
+      case "gender":
+        updatedPatients.sort((a, b) => {
+          const order =
+            sortOrder === "asc" ? ["Male", "Female"] : ["Female", "Male"];
+          return order.indexOf(a.gender) - order.indexOf(b.gender);
+        });
+        break;
+
+      case "bloodGroup":
+        updatedPatients.sort((a, b) =>
+          sortOrder === "asc"
+            ? sortBloodGroups(a.bloodGroup, b.bloodGroup)
+            : sortBloodGroups(b.bloodGroup, a.bloodGroup)
+        );
+        break;
 
       case "name":
         updatedPatients.sort((a, b) =>
-          a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+          sortOrder === "asc"
+            ? a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+            : b.name.toLowerCase().localeCompare(a.name.toLowerCase())
         );
         break;
 
@@ -103,28 +156,15 @@ function PatientsPage() {
         />
 
         {/* Sort Dropdown */}
-        <div className="flex items-center space-x-4">
-          <select
-            value={sortOption}
-            onChange={(e) => setSortOption(e.target.value)}
-            className={
-              viewMode === "grid"
-                ? "hidden"
-                : "border px-4 py-2 rounded-md focus:outline-none"
-            }
-          >
-            <option value="createdAt">Latest Created</option>
-            <option value="age">Age</option>
-            <option value="gender">Gender</option>
-            <option value="name">Name</option>
-          </select>
-          {/* <Dropdown
-            name={sortOption}
-            options={["Recent", "Age", "Gender", 'Name']}
-            placeholder=""
-            onChange={(e) => setSortOption(e.target.value)}
-
-          /> */}
+        <div className="flex items-center space-x-4 text-nowrap">
+          <Dropdown
+            name="sortOption"
+            options={["Recent", "Age", "Gender", "Name", "Blood Group"]}
+            placeholder="Sort By"
+            selectedOption={sortOption}
+            onChange={handleSortChange}
+            className="border px-4 py-2 rounded-md focus:outline-none"
+          />
           <Image
             src={viewMode === "grid" ? ListView : GridView}
             alt="Grid/List Icon"
@@ -161,19 +201,17 @@ function PatientsPage() {
             age={12}
             bloodGroup=""
             contactNumber={1}
-            createdAt=""
             gender=""
-            id=""
             name=""
-            key={``}
+            key={1}
           />
           {paginatedPatients.map((patient) => (
             <PatientCard
-              key={patient._id}
+              key={patient.id}
               surname={patient.surname}
               name={patient.name}
               age={patient.age}
-              id={patient._id}
+              id={patient.id}
               homeTown={patient.homeTown}
               address={patient.address}
               createdAt={patient.createdAt}
@@ -186,34 +224,80 @@ function PatientsPage() {
           ))}
         </div>
       ) : (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto rounded-xl shadow-lg">
           <table className="min-w-full border-collapse border">
-            <thead className="bg-gray-100">
+            <thead className="bg-secondary/70">
               <tr>
-                <th className="px-4 py-2 text-start">Name</th>
+                <th
+                  className="px-4 py-2 text-start duration-300 flex"
+                  onClick={() => {
+                    resetFilters();
+                    setSortOption("name");
+                    setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"));
+                  }}
+                >
+                  Name{" "}
+                  <ChevronUp
+                    className={`${
+                      sortOrder === "asc" ? "rotate-0" : "rotate-180"
+                    }`}
+                  />
+                </th>
                 <th className="px-4 py-2 text-start">Patient ID</th>
                 <th
                   className="px-4 py-2 text-start"
-                  onClick={() =>
-                    setSortOrder((prevOrder) =>
-                      prevOrder === "asc" ? "desc" : "asc"
-                    )
-                  }
+                  onClick={() => {
+                    resetFilters();
+                    setSortOption("age");
+                    setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"));
+                  }}
                 >
                   Age
                 </th>
-                <th className="px-4 py-2 text-start">Gender</th>
-                <th className="px-4 py-2 text-start">Blood Group</th>
+                <th
+                  className="px-4 py-2 text-start cursor-pointer flex "
+                  onClick={() => {
+                    resetFilters(); // Nullify dropdown filters
+                    setSortOption("gender");
+                    setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"));
+                  }}
+                >
+                  Gender{" "}
+                  <ChevronUp
+                    className={`transform ${
+                      sortOption === "gender" && sortOrder === "asc"
+                        ? "rotate-0"
+                        : "rotate-180"
+                    }`}
+                  />
+                </th>
+                <th
+                  className="px-4 py-2 text-start cursor-pointer flex"
+                  onClick={() => {
+                    resetFilters(); // Nullify dropdown filters
+                    setSortOption("bloodGroup");
+                    setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"));
+                  }}
+                >
+                  Blood Group{" "}
+                  <ChevronUp
+                    className={`transform ${
+                      sortOption === "bloodGroup" && sortOrder === "asc"
+                        ? "rotate-0"
+                        : "rotate-180"
+                    }`}
+                  />
+                </th>
                 <th className="px-4 py-2 text-start">Contact Number</th>
               </tr>
             </thead>
             <tbody>
               {paginatedPatients.map((patient) => (
                 <PatientRow
-                  key={patient._id}
+                  key={patient.id}
                   name={patient.name}
                   age={patient.age}
-                  id={patient._id}
+                  _id={patient.id}
                   bloodGroup={patient.bloodGroup}
                   contactNumber={patient.contactNumber}
                   gender={patient.gender}

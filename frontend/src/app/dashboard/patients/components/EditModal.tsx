@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "sonner";
+import InputField from "../../components/ui/InputField";
 // import { useRouter } from "next/navigation";
 
 interface EditModalProps {
@@ -15,7 +16,7 @@ interface EditModalProps {
   onClose: () => void;
   onPatientUpdated: (updatedPatient: {
     id: string;
-    _id: string;
+    // _id: string;
     surname: string;
     name: string;
     age: number;
@@ -58,23 +59,26 @@ const EditModal = ({
 
     try {
       const token = localStorage.getItem("adminToken");
-      const response = await fetch(`http://localhost:5000/api/patients/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          surname,
-          name,
-          age,
-          contactNumber,
-          bloodGroup,
-          gender,
-          address,
-          homeTown,
-        }),
-      });
+      const response = await fetch(
+        `http://localhost:5000/api/patients/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            surname,
+            name,
+            age,
+            contactNumber,
+            bloodGroup,
+            gender,
+            address,
+            homeTown,
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to update patient.");
@@ -100,48 +104,28 @@ const EditModal = ({
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div className="flex gap-4">
-        <div>
-          <label className="block text-sm font-medium">Name</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="w-full px-4 py-2 border rounded-lg"
-            required
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium">Surname</label>
-          <input
-            type="text"
-            value={surname}
-            onChange={(e) => setSurname(e.target.value)}
-            className="w-full px-4 py-2 border rounded-lg"
-            required
-          />
-        </div>
+        <InputField
+          label="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <InputField
+          label="Surname"
+          value={surname}
+          onChange={(e) => setSurname(e.target.value)}
+        />
       </div>
       <div className="flex gap-4">
-        <div>
-          <label className="block text-sm font-medium">Age</label>
-          <input
-            type="number"
-            value={age}
-            onChange={(e) => setAge(parseInt(e.target.value) || 0)}
-            className="w-full px-4 py-2 border rounded-lg"
-            required
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium">Contact Number</label>
-          <input
-            type="number"
-            value={contactNumber}
-            onChange={(e) => setContactNumber(parseInt(e.target.value) || 0)}
-            className="w-full px-4 py-2 border rounded-lg"
-            required
-          />
-        </div>
+        <InputField
+          label="Age"
+          value={age}
+          onChange={(e) => setAge(parseInt(e.target.value) || 0)}
+        />
+        <InputField
+          label="Number"
+          value={contactNumber}
+          onChange={(e) => setContactNumber(parseInt(e.target.value) || 0)}
+        />
       </div>
       <div>
         <label className="block text-sm font-medium">Blood Group</label>

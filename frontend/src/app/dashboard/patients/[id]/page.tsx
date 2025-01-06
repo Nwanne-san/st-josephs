@@ -5,7 +5,7 @@ import Image from "next/image";
 import api from "@/services/api";
 import { Line } from "../../../../../public/icons";
 import Button from "@/components/ui/Button";
-import { Patient, PatientCardProps } from "@/types";
+import { Patient } from "@/types";
 import { info } from "@/data/info";
 import { Ellipsis } from "lucide-react";
 import { toast } from "sonner";
@@ -13,25 +13,11 @@ import Dialog from "../../components/ui/Dialog";
 import Modal from "../../components/ui/Modal";
 import EditModal from "../components/EditModal";
 
-function PatientProfile({
-  // surname,
-  // name,
-  // age,
-  // id,
-  // // createdAt,
-  // contactNumber,
-  // bloodGroup,
-  // address,
-  // homeTown,
-  // gender,
-  isDisabled,
-}: PatientCardProps) {
-  // const router = useRouter();
-  // const { id } = router.query; // Extract the patient ID from the route
+function PatientProfile() {
   const params = useParams(); // Get the dynamic id from params
-  const userId = params.id;
+  const userId = params.id as string;
   console.log(userId);
-  const [patient, setPatient] = useState<Patient>();
+  const [patient, setPatient] = useState<Patient | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
@@ -131,7 +117,7 @@ function PatientProfile({
               {patient?.age} yrs | {patient?.gender}
             </p>
           </div>
-          <p className="text-lg">{patient._id}</p>
+          <p className="text-lg">{patient.id}</p>
         </div>
         <Image src={Line} alt="" />
         <section className="flex gap-14 w-full px-4 items-center justify-evenly">
@@ -188,7 +174,7 @@ function PatientProfile({
               modalHeader="Edit Patient"
             >
               <EditModal
-                id={patient._id}
+                id={patient.id}
                 surname={patient.surname}
                 name={patient.name}
                 age={patient.age}
@@ -214,7 +200,7 @@ function PatientProfile({
               message="Do you really want to delete this patient?"
               onConfirm={confirmDelete}
               onCancel={() => setIsDeleteDialogOpen(false)}
-              disabled={isDisabled || loading} // Disable buttons when either disabled or loading
+              // disabled={isDisabled || loading} // Disable buttons when either disabled or loading
               loading={loading}
             />
           )}
