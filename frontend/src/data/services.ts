@@ -1,10 +1,4 @@
-
 export const services = [
-  {
-    name: "Neurology",
-    icon: "/icons/Heart.svg",
-    focusIcon: "/icons/HeartFocus.svg",
-  },
   {
     name: "Bones",
     icon: "/icons/Heart.svg",
@@ -15,16 +9,7 @@ export const services = [
     icon: "/icons/Heart.svg",
     focusIcon: "/icons/HeartFocus.svg",
   },
-  {
-    name: "Otorhinolaryngology",
-    icon: "/icons/Heart.svg",
-    focusIcon: "/icons/HeartFocus.svg",
-  },
-  {
-    name: "Ophthalmology",
-    icon: "/icons/Heart.svg",
-    focusIcon: "/icons/HeartFocus.svg",
-  },
+
   {
     name: "Cardiovascular",
     icon: "/icons/Heart.svg",
@@ -50,11 +35,7 @@ export const services = [
     icon: "/icons/Heart.svg",
     focusIcon: "/icons/HeartFocus.svg",
   },
-  {
-    name: "Dermatology",
-    icon: "/icons/Heart.svg",
-    focusIcon: "/icons/HeartFocus.svg",
-  },
+
   {
     name: "Gynaecology",
     icon: "/icons/Heart.svg",

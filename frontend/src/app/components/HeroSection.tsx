@@ -54,11 +54,11 @@ const HeroSection: React.FC = () => {
       className="flex flex-col relative w-full h-full bg-center bg-cover bg-no-repeat z-10
        bg-[url('/icons/hero-background-mobile.svg')] sm:bg-[url('/icons/herosection.jpg')] mt-[2rem] sm:mt-[5rem] lg:mt-[10rem]"
     >
-      {/* <div className="absolute inset-0 bg-white opacity-30 sm:opacity-20 z-0"></div> */}
+      <div className="absolute inset-0 bg-white opacity-30 sm:opacity-20 z-0"></div>
 
       {/* Animation container */}
       <motion.div
-        className="sm:h-[80vh] h-[70vh] flex flex-col gap-8 justify-center relative"
+        className="sm:h-[80vh] h-[70vh] flex flex-col gap-3 sm:gap-8 justify-center relative"
         variants={containerVariants}
         initial="hidden"
         animate="visible"

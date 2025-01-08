@@ -8,7 +8,7 @@ const yeseva = Yeseva_One({ subsets: ["latin"], weight: ["400"] });
 const ContactUs: React.FC = () => {
   return (
     <>
-      <Wrapper className="flex gap-5 py-16">
+      <Wrapper className="flex sm:flex-row flex-col gap-5 py-4 sm:py-16">
         <div className="flex flex-col gap-10 w-full">
           <div className="flex flex-col gap-2 h-">
             <h1 className="text-lg text-secondary uppercase font-bold">
@@ -48,13 +48,13 @@ const ContactUs: React.FC = () => {
           {contacts.map((item, index) => (
             <div
               key={index}
-              className={`flex flex-col gap-3.5 px-7 py-12 ${item.bgColor} rounded-lg w-full md:text-wrap`}
+              className={`flex flex-col gap-3.5  px-3 sm:px-7 py-9 sm:py-12 ${item.bgColor} rounded-lg w-full md:text-wrap`}
             >
               <Image src={item.src} alt="" />
               <p className={`${item.color} uppercase font-bold text-lg`}>
                 {item.name}
               </p>
-              <div className="flex flex-col">
+              <div className="flex flex-col text-sm sm:text-base">
                 <span className={`${item.color} `}>{item.text}</span>
                 <span className={`${item.color} `}>{item?.text2}</span>
               </div>

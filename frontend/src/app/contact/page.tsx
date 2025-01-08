@@ -8,15 +8,19 @@ import Footer from "@/components/layout/Footer";
 const Contact: React.FC = () => {
   return (
     <>
-      <Navbar />
-      <Hero
-        backgroundImage="/icons/contact-bg.svg"
-        breadcrumbs="Home / Contact"
-        heading="Our Contacts"
-      />
-      <MapComponent />
-      <ContactUs />
-      <Footer />
+      <div className="relative">
+        <Navbar className="backdrop-blur-xl fixed top-0 w-full" />
+        <div className=" mt-[2rem] sm:mt-[5rem] lg:mt-[8rem]">
+          <Hero
+            backgroundImage="/icons/contact-bg.svg"
+            breadcrumbs="Home / Contact"
+            heading="Our Contacts"
+          />
+          <MapComponent />
+          <ContactUs />
+          <Footer />
+        </div>
+      </div>
     </>
   );
 };

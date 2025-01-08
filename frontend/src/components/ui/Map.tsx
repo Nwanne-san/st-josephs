@@ -1,15 +1,14 @@
 const MapComponent = () => {
   return (
     <div
-      style={{ width: "100%", height: "400px" }}
-      className="w-full flex justify-center items-center my-16"
+      style={{ width: "100%", height: "500px" }}
+      className="w-full flex justify-center items-center md:my-16 px-5 sm:px-0"
     >
       <iframe
-        title="Google Map"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d495.16825464386824!2d7.384068685567572!3d6.849057700778539!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1044e9ae7dea5901%3A0x34900e204966a2ca!2s44B%20New%20Anglican%20Road%2C%20Nsukka!5e0!3m2!1sen!2sng!4v1734173529547!5m2!1sen!2sng"
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5992.732813479113!2d7.386506055174039!3d6.848689820718791!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1044e9ae7dea5901%3A0x34900e204966a2ca!2sSt.%20Joseph&#39;s%20Hospital!5e0!3m2!1sen!2sng!4v1736347905923!5m2!1sen!2sng"
         width="600"
         height="450"
-        style={{ border: 0 }}
+        style={{border: 1}}
         allowFullScreen={true}
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"

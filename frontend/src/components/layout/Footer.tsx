@@ -7,7 +7,7 @@ import { contact_links, links } from "@/data/footer";
 const Footer: React.FC = () => {
   return (
     <Wrapper className="bg-primary w-full flex flex-col gap-12 text-white py-9">
-      <div className="flex flex-wrap gap-2 sm:gap-10 justify-between w-full items-start">
+      <div className="flex flex-wrap sm:flex-row lg:grid grid-cols-4 gap-2 sm:gap-10 lg:gap-8 justify-between w-full items-start">
         {/* First Div */}
         <div className="flex flex-col gap-6 flex-grow basis-64 lg:basis-1/4">
           <Image src={Logo2} alt="" />
