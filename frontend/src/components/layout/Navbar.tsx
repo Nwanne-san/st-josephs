@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Logo, Logo2, LogoMain } from "../../../public/icons";
+import { Logo2, LogoMain } from "../../../public/icons";
 import { details, links } from "@/data/navbar";
 import Button from "../ui/Button";
 import { useRouter } from "next/navigation";

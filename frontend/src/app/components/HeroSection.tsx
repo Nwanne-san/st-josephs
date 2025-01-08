@@ -30,15 +30,6 @@ const HeroSection: React.FC = () => {
     },
   };
 
-  const textVariant = {
-    hidden: { opacity: 0, y: 50 }, // Starts below
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { ease: "easeInOut", duration: 1 },
-    },
-  };
-
   const topTextVariant = {
     hidden: { opacity: 0, y: -50 }, // Starts above
     visible: {
@@ -59,7 +50,7 @@ const HeroSection: React.FC = () => {
 
   return (
     <Wrapper
-    //  style={{ backgroundImage: "url('/icons/herosection.svg')" }}
+      //  style={{ backgroundImage: "url('/icons/herosection.svg')" }}
       className="flex flex-col relative w-full h-full bg-center bg-cover bg-no-repeat z-10
        bg-[url('/icons/hero-background-mobile.svg')] sm:bg-[url('/icons/herosection.jpg')] mt-[2rem] sm:mt-[5rem] lg:mt-[10rem]"
     >
