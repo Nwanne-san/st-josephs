@@ -16,16 +16,16 @@ const NavbarDashboard: React.FC = () => {
 
   return (
     <nav
-      className="bg-white px-[24px] py-4 xl:py-6 w-full rounded-xl border-primary-2/20 shadow-md"
+      className="bg-white pl-14 lg:px-[24px] py-4 xl:py-6 w-full rounded-xl border-primary-2/20 shadow-md"
       role="navbar"
     >
       <div className="flex items-center justify-between w-full gap-2">
         {/* Header dynamically updates */}
         <div className="flex items-center gap-2">
-          <h1 className="text-xl xl:text-3xl font-bold uppercase pr-2 border-r">
+          <h1 className="text-xl xl:text-3xl font-bold uppercase pr-2 sm:border-r">
             {currentRoute}
           </h1>
-          <p className="text-sm font-extralight">Super Admin</p>
+          <p className="text-sm font-extralight hidden sm:block">Super Admin</p>
         </div>
 
         <div className="flex gap-2 w">

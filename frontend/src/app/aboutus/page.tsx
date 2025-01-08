@@ -8,18 +8,20 @@ import Footer from "@/components/layout/Footer";
 
 const AboutUs: React.FC = () => {
   return (
-    <div>
-      <Navbar />
-      <Hero
-        backgroundImage="/icons/about-bg.svg"
-        breadcrumbs="Home/ About"
-        heading="About us"
-      />
-      <About/>
-      <Testimonial/>
-      <Contact/>
-      {/* <MapComponent/> */}
-      <Footer/>
+    <div className="relative">
+      <Navbar className="backdrop-blur-xl fixed top-0 w-full"/>
+      <div className="mt-[2rem] sm:mt-[5rem] lg:mt-[8rem]">
+        <Hero
+          backgroundImage="/icons/about-bg.svg"
+          breadcrumbs="Home/ About"
+          heading="About us"
+        />
+        <About/>
+        <Testimonial/>
+        <Contact/>
+        {/* <MapComponent/> */}
+        <Footer/>
+      </div>
     </div>
   );
 };

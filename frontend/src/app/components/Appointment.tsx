@@ -4,22 +4,40 @@ import React from "react";
 import { Yeseva_One } from "next/font/google";
 import Button from "@/components/ui/Button";
 import Dropdown from "@/components/ui/Dropdown";
+import { motion } from "framer-motion";
 
 const yeseva = Yeseva_One({ subsets: ["latin"], weight: ["400"] });
 
 interface AppointmentProps {
   className?: string;
 }
-
+const variants = {
+  hidden: { opacity: 0, y: 50 }, // Start below and invisible
+  visible: {
+    opacity: 1,
+    y: 0, // Move to the original position
+    transition: { duration: 0.8, ease: "easeOut" }, // Smooth animation
+  },
+};
 const BookAppointment: React.FC<AppointmentProps> = ({ className }) => {
   return (
     <Wrapper
       style={{ backgroundImage: "url('/icons/appointment-bg.svg')" }}
-      className={`flex justify-between items-center py-16 w-full relative ${
+      className={`flex sm:flex-row flex-col gap-4 bg-center bg-cover sm:gap-0 justify-between items-center py-16 w-full relative ${
         className || ""
       }`}
     >
       <div className="absolute inset-0 bg-white opacity-60 z-0"></div>
+
+      <motion.div
+      variants={variants}
+      initial="hidden"
+      whileInView="visible" // Triggers animation when in view
+      viewport={{ amount: 0.2 }} // Trigger when 30% of the section is in view
+      className={`flex sm:flex-row flex-col gap-4 sm:gap-0 justify-between items-center w-full relative ${
+        className || ""
+      }`}
+      >
 
       <div className="flex flex-col gap-4 w-full relative">
         <h2 className={`${yeseva.className} text-secondary text-4xl`}>
@@ -84,6 +102,7 @@ const BookAppointment: React.FC<AppointmentProps> = ({ className }) => {
         ></textarea>
         <Button className="uppercase w-full  !rounded-none">submit</Button>
       </form>
+      </motion.div>
     </Wrapper>
   );
 };

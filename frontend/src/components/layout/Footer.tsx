@@ -7,14 +7,17 @@ import { contact_links, links } from "@/data/footer";
 const Footer: React.FC = () => {
   return (
     <Wrapper className="bg-primary w-full flex flex-col gap-12 text-white py-9">
-      <div className="flex gap-10 justify-between w-full items-center">
-        <div className="flex flex-col gap-6 w-64">
+      <div className="flex flex-wrap gap-2 sm:gap-10 justify-between w-full items-start">
+        {/* First Div */}
+        <div className="flex flex-col gap-6 flex-grow basis-64 lg:basis-1/4">
           <Image src={Logo2} alt="" />
           <h4>Leading the Way in Medical Excellence, Trusted Care.</h4>
         </div>
-        <div className="flex flex-col gap-9 ">
+
+        {/* Second Div */}
+        <div className="flex flex-col gap-5 sm:gap-9 flex-grow basis-64 lg:basis-1/4">
           <span className="font-semibold text-lg md:text-nowrap">Important Links</span>
-          <ul>
+          <ul className="flex flex-col gap-2">
             {links.map((item, index) => (
               <a
                 href={item.route || "#"}
@@ -29,9 +32,11 @@ const Footer: React.FC = () => {
             ))}
           </ul>
         </div>
-        <div className="flex flex-col gap-9">
+
+        {/* Third Div */}
+        <div className="flex flex-col gap-5 sm:gap-9 flex-grow basis-64 lg:basis-1/4">
           <span className="font-semibold text-lg">Contact Us</span>
-          <ul>
+          <ul className="flex flex-col gap-2">
             {contact_links.map((item, index) => (
               <a
                 href={item.route}
@@ -46,14 +51,16 @@ const Footer: React.FC = () => {
             ))}
           </ul>
         </div>
-        <div className="flex flex-col gap-9 ">
+
+        {/* Fourth Div */}
+        <div className="flex flex-col gap-5 sm:gap-9 flex-grow basis-full lg:basis-1/4">
           <span className="font-semibold text-lg">Newsletter</span>
           <div className="bg-accent rounded-lg flex gap-2 py-3.5 px-2.5">
             <input
               type="email"
               name="Email"
               id=""
-              className="bg-accent rounded-lg placeholder:text-primary/50 text-primary w-[260px] focus:outline-none"
+              className="bg-accent rounded-lg placeholder:text-primary/50 text-primary w-full focus:outline-none"
               placeholder="Enter your email address"
             />
             <button>

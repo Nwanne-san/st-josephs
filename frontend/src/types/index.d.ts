@@ -28,3 +28,14 @@ export interface PatientCardProps {
   isDisabled: boolean;
   isLoading: boolean;
 }
+
+export interface Iproperties {
+  sideNavitems?: {
+    route: string;
+    link: string;
+    icon: string;
+    id: string;
+    name: string;
+  }[];
+  className?: string;
+}

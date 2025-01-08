@@ -1,97 +1,80 @@
 "use client";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FC } from "react";
-import { LogoMain } from "../../../../../public/icons";
-import Image from "next/image";
-import { sideItems } from "@/data/sidebar";
+import { useState, FC } from "react";
+import SidebarContent from "../ui/SidebarContent";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
 interface Iproperties {
-  sideNavitems?: {
-    route: string;
-    link: string;
-    icon: string;
-    id: string;
-    name: string;
-  }[];
   className?: string;
 }
 
 const SettingsSidebar: FC<Iproperties> = ({ className }) => {
   const pathname = usePathname();
-  console.log(pathname);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const currentPath =
     pathname?.split("/").length === 2 ? "dashboard" : pathname?.split("/")[2];
   const organizationPath = pathname?.split("/")[2];
-  console.log(organizationPath);
   const isDashboard =
     currentPath === "dashboard" && organizationPath === undefined;
 
-  // If user data is not yet loaded, show the skeleton loader
-  // if (!user) {
-  //   return (
-  //     <div
-  //       className={` ${className} h-full hidden lg:flex flex-col gap-11 items-center justify-center bg-white-200 pt-6  md:w-[220px] md:justify-start `}
-  //     >
-  //     </div>
-  //   );
-  // }
+  const handleCloseMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
 
   return (
-    <div
-      className={` ${className} -5 pt-6 h-full hidden lg:flex flex-col gap-8 items-start justify-center bg-white w-full md:w-[270px] lg:w-[240px] md:justify-start drop-shadow-md`}
-    >
-      <Image src={LogoMain} alt="" className="px-5" />
-      <section className=" flex flex-col gap-y-3 -5 w-full">
-        {sideItems.slice(0, 3).map((item, index) => (
-          <Link
-            key={index}
-            href={item.link}
-            data-testid={item.id}
-            role="sidebar-link"
-            className={`${
-              currentPath === item.id ||
-              (isDashboard && item.id === "dashboard")
-                ? "bg-active text-primary-2/80 bg-accent text-black rounded-lg"
-                : " text-primary-2/50 hover:bg-gray-300"
-            } flex uppercase cursor-pointer items-start justify-start px-5 gap-2.5 rounded-lg py-3 text-lg transition-all duration-300 ease-in md:h-auto md:w-auto md:justify-start md:rounded-sm`}
-          >
-            <Image
-              src={item.icon}
-              alt=""
-              className="h-5 w-5"
-              role="sidebar-icon"
+    <>
+      {/* Hamburger Icon for Mobile */}
+      <button
+        className="lg:hidden fixed top-4 left-5 z-50 p-2 bg-white rounded-md shadow-md"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      >
+        {isMobileMenuOpen ? (
+          <X className="h-6 w-6" />
+        ) : (
+          <Menu className="h-6 w-6" />
+        )}
+      </button>
+
+      {/* Sidebar for Desktop */}
+      <div
+        className={` ${className} h-full hidden lg:flex flex-col gap-11 items-center justify-center bg-white-200 pt-6 lg:w-[230px] xl:w-[270px] md:justify-start `}
+      >
+        <SidebarContent currentPath={currentPath} isDashboard={isDashboard} />
+      </div>
+
+      {/* Mobile Sidebar */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            <motion.div
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="fixed top-0 left-0 z-30 w-4/6 sm:w-2/5 h-full pt-20 bg-white shadow-lg flex gap-8 flex-col p-4"
+            >
+              <SidebarContent
+                currentPath={currentPath}
+                isDashboard={isDashboard}
+                onClose={handleCloseMenu}
+              />
+            </motion.div>
+
+            {/* Background Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-30"
+              onClick={handleCloseMenu} // Close sidebar when overlay is clicked
             />
-            <span className="text-nowrap text-base">{item.route}</span>
-          </Link>
-        ))}
-      </section>
-      <h4 className="px-5">Account</h4>
-      <section className=" flex flex-col gap-y-3 w-full">
-        {sideItems.slice(3).map((item, index) => (
-          <Link
-            key={index}
-            href={item.link}
-            data-testid={item.id}
-            role="sidebar-link"
-            className={`${
-              currentPath === item.id ||
-              (isDashboard && item.id === "dashboard")
-                ? " text-primary-2/80 bg-accent rounded-lg"
-                : " text-primary-2/50 hover:bg-gray-300"
-            } flex uppercase cursor-pointer items-start justify-start gap-2.5 rounded-lg px-5 py-3 text-lg transition-all duration-300 ease-in md:h-auto md:w-auto md:justify-start md:rounded-sm`}
-          >
-            <Image
-              src={item.icon}
-              alt=""
-              className="h-5 w-5"
-              role="sidebar-icon"
-            />
-            <span className="text-nowrap text-base">{item.route}</span>
-          </Link>
-        ))}
-      </section>
-    </div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

@@ -10,9 +10,9 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col h-screen p-5 bg-gray-100">
+    <div className="flex flex-col h-screen p-2 lg:p-5 bg-gray-100">
       {/* Sidebar */}
-      <div className="flex flex-1 gap-4">
+      <div className="fle">
         <div className="sticky top-20 z-20 ">
           <SettingsSidebar />
         </div>
@@ -27,7 +27,7 @@ export default function AdminLayout({
             </div>
 
             {/* Suspense to load children */}
-            <div className="p-4 bg-white h-full shadow-xl rounded-xl">
+            <div className="sm:p-4 bg-white h-full shadow-xl rounded-xl">
               <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
             </div>
           </div>
