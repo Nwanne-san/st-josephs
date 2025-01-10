@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="relative flex justify-between flex-col pb-20 gap-5 sm:gap-10  font-[family-name:var(--font-geist-sans)]">
       <div className="relative">
-        <Navbar className="backdrop-blur-xl fixed top-0 w-full" />
+        <Navbar className=" fixed top-0 w-full" />
         <HeroSection />
       </div>
       <Welcome />

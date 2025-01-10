@@ -52,7 +52,7 @@ const HeroSection: React.FC = () => {
     <Wrapper
       //  style={{ backgroundImage: "url('/icons/herosection.svg')" }}
       className="flex flex-col relative w-full h-full bg-center bg-cover bg-no-repeat z-10
-       bg-[url('/icons/hero-background-mobile.svg')] sm:bg-[url('/icons/herosection.jpg')] mt-[2rem] sm:mt-[5rem] lg:mt-[10rem]"
+       bg-[url('/icons/hero-background-mobile.svg')] sm:bg-[url('/icons/herosection.jpg')] mt-[2rem] sm:mt-[5rem] lg:mt-[8rem]"
     >
       <div className="absolute inset-0 bg-white opacity-30 sm:opacity-20 z-0"></div>
 

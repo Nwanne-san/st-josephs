@@ -23,7 +23,7 @@ const BookAppointment: React.FC<AppointmentProps> = ({ className }) => {
   return (
     <Wrapper
       style={{ backgroundImage: "url('/icons/appointment-bg.svg')" }}
-      className={`flex sm:flex-row flex-col gap-4 bg-center bg-cover sm:gap-0 justify-between items-center py-16 w-full relative ${
+      className={`flex sm:flex-row flex-col gap-4 bg-center bg-cover sm:gap-0 justify-between items-center pt-6 sm:py-16 w-full relative ${
         className || ""
       }`}
     >

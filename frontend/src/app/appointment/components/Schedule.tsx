@@ -5,17 +5,21 @@ const yeseva = Yeseva_One({ subsets: ["latin"], weight: ["400"] });
 import { Emergency2 } from "../../../../public/icons";
 import Image from "next/image";
 
-const Schedule = () => {
+const Schedule = ({ className }: { className?: string }) => {
   return (
-    <div className="flex flex-col bg-primary text-white justify-center w-full h-fit mt-16 py-12 gap-7 rounded-md">
-      <h1 className={`${yeseva.className} text-5xl text-center text-accent`}>
+    <div
+      className={` ${className} flex flex-col bg-primary text-white justify-center w-full h-fit lg:mt-1 py-12 gap-7 rounded-md`}
+    >
+      <h1
+        className={`${yeseva.className} text-3xl sm:text-5xl text-center text-accent`}
+      >
         Schedule hours
       </h1>
       <div className="bg-transparent text-white px-12 w-full flex flex-col gap-5 justify-center items-center">
         {schedule.map((item, index) => (
           <div
             key={index}
-            className={`flex justify-around w-full items-center px-4 text-lg text-nowrap`}
+            className={`flex justify-around w-full items-center sm:px-4 text-center text-base sm:text-lg text-nowrap`}
           >
             <span className="flex justify-start">{item.day}</span>
             <span className="">--</span>

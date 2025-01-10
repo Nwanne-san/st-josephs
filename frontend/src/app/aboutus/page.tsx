@@ -9,7 +9,7 @@ import Footer from "@/components/layout/Footer";
 const AboutUs: React.FC = () => {
   return (
     <div className="relative">
-      <Navbar className="backdrop-blur-xl fixed top-0 w-full"/>
+      <Navbar className="fixed top-0 w-full"/>
       <div className="mt-[2rem] sm:mt-[5rem] lg:mt-[8rem]">
         <Hero
           backgroundImage="/icons/about-bg.svg"

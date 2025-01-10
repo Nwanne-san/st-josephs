@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
       <div className="flex flex-wrap sm:flex-row lg:grid grid-cols-4 gap-2 sm:gap-10 lg:gap-8 justify-between w-full items-start">
         {/* First Div */}
         <div className="flex flex-col gap-6 flex-grow basis-64 lg:basis-1/4">
-          <Image src={Logo2} alt="" />
+          <Image src={Logo2} alt="" width={193} height={42}/>
           <h4>Leading the Way in Medical Excellence, Trusted Care.</h4>
         </div>
 

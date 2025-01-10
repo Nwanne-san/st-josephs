@@ -9,8 +9,8 @@ const yeseva = Yeseva_One({ subsets: ["latin"], weight: ["400"] });
 
 const About = () => {
   return (
-    <Wrapper className="flex  gap-5 py-16">
-      <Image src={AboutImage} alt="" className="w-" />
+    <Wrapper className="flex items-center lg:items-start gap-5 py-16">
+      <Image src={AboutImage} alt="" className="w-[200px] h-[240px] lg:w-auto lg:h-auto" />
       <div className="flex flex-col h-full gap-7 max-w-[580px]">
         <div>
           <h2 className=" text-xl uppercase font-semibold text-secondary mb-2">
