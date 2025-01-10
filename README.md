@@ -1,10 +1,29 @@
-I'll expand the README with more detailed sections and technical information based on what I can see from your repository.
+# St. Josephs Web Application
 
-```markdown project="st-josephs" file="README.md"
-...
-```
+A Next.js web application with full-stack integration featuring MongoDB backend services.
 
-2. Install dependencies:
+## Overview
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app), utilizing MongoDB for data persistence and modern web technologies for the frontend.
+
+## Technology Stack
+
+- **Frontend**: Next.js with TypeScript
+- **Backend**: Node.js with MongoDB integration
+- **Styling**: CSS
+- **Font Optimization**: Uses `next/font` with Geist font family
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (Latest LTS version recommended)
+- npm/yarn/pnpm
+- MongoDB (local instance or connection string)
+
+### Installation
+
+1. Install dependencies:
 
 ```shellscript
 npm install
@@ -15,7 +34,7 @@ pnpm install
 ```
 
 
-3. Set up environment variables:
+2. Set up environment variables:
 Create a `.env.local` file in the root directory and add the following:
 
 ```plaintext
@@ -23,7 +42,7 @@ MONGODB_URI=your_mongodb_connection_string
 NEXT_PUBLIC_API_URL=your_api_url
 ```
 
-4. Run the development server:
+3. Run the development server:
 
 ```shellscript
 npm run dev
@@ -34,7 +53,7 @@ pnpm dev
 ```
 
 
-5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 
 ## Project Structure
@@ -51,7 +70,7 @@ st-josephs/
 └── ...
 ```
 
-## Features
+### Features
 
 ### Implemented Features
 
