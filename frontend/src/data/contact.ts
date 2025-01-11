@@ -5,7 +5,7 @@ export const contacts = [
     src: Emergency,
     name: "Emergency",
     color: "text-primary",
-    text: "+234-810-402-6999",
+    text: "+234-906-674-1647",
     bgColor: "bg-accent",
   },
   {

@@ -1,11 +1,11 @@
 export const services = [
   {
-    name: "Bones",
+    name: "Clinicals",
     icon: "/icons/Heart.svg",
     focusIcon: "/icons/HeartFocus.svg",
   },
   {
-    name: "Oncology",
+    name: "Surgery",
     icon: "/icons/Heart.svg",
     focusIcon: "/icons/HeartFocus.svg",
   },
@@ -16,12 +16,12 @@ export const services = [
     focusIcon: "/icons/HeartFocus.svg",
   },
   {
-    name: "Pulmonology",
+    name: "Paediatrics",
     icon: "/icons/Heart.svg",
     focusIcon: "/icons/HeartFocus.svg",
   },
   {
-    name: "Renal Medicine",
+    name: "Ultrasound",
     icon: "/icons/Heart.svg",
     focusIcon: "/icons/HeartFocus.svg",
   },

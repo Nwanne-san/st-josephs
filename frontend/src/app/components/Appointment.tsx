@@ -30,78 +30,77 @@ const BookAppointment: React.FC<AppointmentProps> = ({ className }) => {
       <div className="absolute inset-0 bg-white opacity-60 z-0"></div>
 
       <motion.div
-      variants={variants}
-      initial="hidden"
-      whileInView="visible" // Triggers animation when in view
-      viewport={{ amount: 0.2 }} // Trigger when 30% of the section is in view
-      className={`flex sm:flex-row flex-col gap-4 sm:gap-0 justify-between items-center w-full relative ${
-        className || ""
-      }`}
+        variants={variants}
+        initial="hidden"
+        whileInView="visible" // Triggers animation when in view
+        viewport={{ amount: 0.2 }} // Trigger when 30% of the section is in view
+        className={`flex sm:flex-row flex-col gap-4 sm:gap-0 justify-between items-center w-full relative ${
+          className || ""
+        }`}
       >
-
-      <div className="flex flex-col gap-4 w-full relative">
-        <h2 className={`${yeseva.className} text-secondary text-4xl`}>
-          Book an Appointment
-        </h2>
-        <p className="max-w-96">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-          placerat scelerisque tortor ornare ornare. Convallis felis vitae
-          tortor augue. Velit nascetur proin massa in. Consequat faucibus
-          porttitor enim et.
-        </p>
-      </div>
-      <form className="rounded-lg w-full relative bg-primary text-white ">
-        <div className="grid grid-cols-2 ">
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            className="px-4 py-3 placeholder:text-white bg-transparent border-b border-gray-300"
-          />
-          <Dropdown
-            name="gender"
-            options={["Male", "Female", "Other"]}
-            placeholder="Gender"
-            onChange={function (): void {
-              throw new Error("Function not implemented.");
-            }}
-            selectedOption={""}
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            className="px-4 py-3 placeholder:text-white bg-transparent border-b borde-r border-accent"
-          />
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Phone"
-            className="px-4 py-3 placeholder:text-white bg-transparent border-b border-l border-accent"
-          />
-          <input
-            type="date"
-            name="doB"
-            className="px-4 py-3 placeholder:text-white bg-transparent border-b border-l border-accent"
-            placeholder="Date"
-          />
-          <Dropdown
-            name="time"
-            options={["10:00 AM", "2:00 PM"]}
-            placeholder="Time"
-            onChange={function (): void {
-              throw new Error("Function not implemented.");
-            }}
-            selectedOption={""}
-          />
+        <div className="flex flex-col gap-4 w-full relative">
+          <h2 className={`${yeseva.className} text-secondary text-4xl`}>
+            Book an Appointment
+          </h2>
+          <p className="max-w-96">
+            Experience convenient and personalized care by scheduling your
+            appointment today. Whether it&apos;s for a consultation or
+            follow-up, we&apos;re here to make your healthcare journey seamless
+            and stress-free.
+          </p>
         </div>
-        <textarea
-          name="message"
-          placeholder="Message"
-          className="px-4 py-3 w-full h-28 bg-transparent focus:outline-none resize-none"
-        ></textarea>
-        <Button className="uppercase w-full  !rounded-none">submit</Button>
-      </form>
+        <form className="rounded-lg w-full relative bg-primary text-white ">
+          <div className="grid grid-cols-2 ">
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              className="px-4 py-3 placeholder:text-white bg-transparent border-b border-gray-300"
+            />
+            <Dropdown
+              name="gender"
+              options={["Male", "Female", "Other"]}
+              placeholder="Gender"
+              onChange={function (): void {
+                throw new Error("Function not implemented.");
+              }}
+              selectedOption={""}
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              className="px-4 py-3 placeholder:text-white bg-transparent border-b borde-r border-accent"
+            />
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone"
+              className="px-4 py-3 placeholder:text-white bg-transparent border-b border-l border-accent"
+            />
+            <input
+              type="date"
+              name="doB"
+              className="px-4 py-3 placeholder:text-white bg-transparent border-b border-l border-accent"
+              placeholder="Date"
+            />
+            <Dropdown
+              name="time"
+              options={["10:00 AM", "2:00 PM"]}
+              placeholder="Time"
+              onChange={function (): void {
+                throw new Error("Function not implemented.");
+              }}
+              selectedOption={""}
+            />
+          </div>
+          <textarea
+            name="message"
+            placeholder="Message"
+            className="px-4 py-3 w-full h-28 bg-transparent focus:outline-none resize-none"
+          ></textarea>
+          <Button className="uppercase w-full  !rounded-none">submit</Button>
+        </form>
       </motion.div>
     </Wrapper>
   );

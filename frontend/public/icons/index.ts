@@ -1,4 +1,6 @@
 import Logo from "./Logo.svg";
+import LogoNew from "./stjoseph.png";
+import LogoNew2 from "./stjoseph2.png";
 import Logo2 from "./Meddical.svg";
 import Dial from "./Group 188.svg";
 import Clock from "./Group 177.svg";
@@ -38,4 +40,6 @@ export {
   AboutImage,
   Quote,
   Line,
+  LogoNew,
+  LogoNew2,
 };

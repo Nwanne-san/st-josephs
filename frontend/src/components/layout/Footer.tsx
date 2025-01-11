@@ -1,22 +1,32 @@
 import React from "react";
 import Image from "next/image";
 import Wrapper from "../ui/Wrapper";
-import { Logo2, Send } from "../../../public/icons";
+import { Send, LogoNew } from "../../../public/icons";
 import { contact_links, links } from "@/data/footer";
 
 const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <Wrapper className="bg-primary w-full flex flex-col gap-12 text-white py-9">
       <div className="flex flex-wrap sm:flex-row lg:grid grid-cols-4 gap-2 sm:gap-10 lg:gap-8 justify-between w-full items-start">
         {/* First Div */}
         <div className="flex flex-col gap-6 flex-grow basis-64 lg:basis-1/4">
-          <Image src={Logo2} alt="" width={193} height={42}/>
+          <Image
+            src={LogoNew}
+            alt=""
+            width={193}
+            height={42}
+            className="-ml-10"
+          />
           <h4>Leading the Way in Medical Excellence, Trusted Care.</h4>
         </div>
 
         {/* Second Div */}
         <div className="flex flex-col gap-5 sm:gap-9 flex-grow basis-64 lg:basis-1/4">
-          <span className="font-semibold text-lg md:text-nowrap">Important Links</span>
+          <span className="font-semibold text-lg md:text-nowrap">
+            Important Links
+          </span>
           <ul className="flex flex-col gap-2">
             {links.map((item, index) => (
               <a
@@ -70,8 +80,8 @@ const Footer: React.FC = () => {
         </div>
       </div>
       <hr className="bg-white" />
-      <div className="flex justify-between">
-        <p>&copy; 2021 Hospital&apos;s name All Rights Reserved by PNTEC-LTD</p>
+      <div className="flex justify-between ">
+        <p>&copy; {currentYear} St Joseph&apos;s. All Rights Reserved</p>
       </div>
     </Wrapper>
   );

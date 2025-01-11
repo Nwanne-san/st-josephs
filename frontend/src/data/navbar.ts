@@ -4,9 +4,9 @@ export const details = [
   {
     src: Dial,
     message: "emergency",
-    text: "+234 903 954 0722",
+    text: "+234 906 674 1647",
     alt: "Telephone",
-    href: "tel:+2349012345678",
+    href: "tel:+2349066741647",
   },
   {
     src: Clock,
@@ -17,7 +17,7 @@ export const details = [
   {
     src: Location,
     message: "location",
-    text: " Nsukka, Enugu, Nigeria. ",
+    text: " Nsukka, Enugu, Nigeria.",
     alt: "Address",
   },
 ];
@@ -35,10 +35,7 @@ export const links = [
     name: "Services",
     route: "/services",
   },
-  {
-    name: "News",
-    route: "/blog",
-  },
+
   {
     name: "Contact",
     route: "/contact",

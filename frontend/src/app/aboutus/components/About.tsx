@@ -10,7 +10,11 @@ const yeseva = Yeseva_One({ subsets: ["latin"], weight: ["400"] });
 const About = () => {
   return (
     <Wrapper className="flex items-center lg:items-start gap-5 py-16">
-      <Image src={AboutImage} alt="" className="w-[200px] h-[240px] lg:w-auto lg:h-auto" />
+      <Image
+        src={AboutImage}
+        alt=""
+        className="w-[200px] h-[240px] lg:w-auto lg:h-auto"
+      />
       <div className="flex flex-col h-full gap-7 max-w-[580px]">
         <div>
           <h2 className=" text-xl uppercase font-semibold text-secondary mb-2">
@@ -32,15 +36,20 @@ const About = () => {
         </div>
         <div className="flex flex-col gap-4">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-            placerat scelerisque tortor ornare ornare. Quisque placerat
-            scelerisque tortor ornare ornare Convallis felis vitae tortor augue.
-            Consequat faucibus porttitor enim et.
+            Welcome to St Joseph&apos;s, a private healthcare facility offering
+            personalized and compassionate care in a calm, welcoming
+            environment. With a dedicated resident doctor and skilled nurses, we
+            deliver exceptional medical services tailored to each patient&apos;s
+            needs. Our modern admission rooms prioritize privacy and comfort,
+            ensuring attentive, one-on-one care for a seamless healthcare
+            experience.
           </p>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-            placerat scelerisque. Convallis felis vitae tortor augue. Velit
-            nascetur proin massa in.
+            From routine checkups to urgent care, we combine expertise with a
+            personal touch to make sure you feel cared for every step of the
+            way. At St Joseph&apos;s, your health and comfort are always our top
+            priorities, and we are committed to being a trusted partner on your
+            journey to better health.
           </p>
         </div>
       </div>

@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Logo2, LogoMain } from "../../../public/icons";
+import { Logo2, LogoNew2 } from "../../../public/icons";
 import { details, links } from "@/data/navbar";
 import Button from "../ui/Button";
 import { useRouter } from "next/navigation";
@@ -32,11 +32,11 @@ export default function Navbar({ className }: { className?: string }) {
       >
         {/* First Wrapper: Logo and Contact Details */}
         <Wrapper className="w-full hidden sm:flex justify-between py-1 sm:py-4 items-center backdrop-blur-sm ">
-          <Link href={"/"} className="hidden lg:flex">
+          <Link href={"/"} className="hidden lg:flex -ml-10">
             <Image
-              src={LogoMain}
+              src={LogoNew2}
               alt="Hospital Logo"
-              className="w-[193px] h-[42px]"
+              className="w-[193px] h-[42px] "
               width={193}
               height={42}
             />
@@ -68,9 +68,9 @@ export default function Navbar({ className }: { className?: string }) {
         <Wrapper className="w-full bg-primary sticky top-0 flex items-center justify-between py-4 z-[]">
           <div className="flex items-center justify-between w-full">
             {/* Hamburger Icon */}
-            <Link href={"/"} className="lg:hidden">
+            <Link href={"/"} className="lg:hidden flex justify-start">
               <Image
-                src={Logo2}
+                src={LogoNew2}
                 alt="Hospital Logo"
                 className="w-[193px] h-[42px]"
               />
@@ -119,8 +119,12 @@ export default function Navbar({ className }: { className?: string }) {
                 initial={{ y: "-100%" }}
                 animate={{ y: 0 }}
                 exit={{ y: "-100%" }}
-                transition={{ type: "spring", stiffness: 300, damping: 30, duration: 0.6 }}
-          
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 30,
+                  duration: 0.6,
+                }}
               >
                 <div className="flex w-full justify-between">
                   <Link href={"/"}>
@@ -162,14 +166,14 @@ export default function Navbar({ className }: { className?: string }) {
                 </Button>
               </motion.div>
               {/* Overlay for Blurring the Underlying Page */}
-                            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-30"
-              onClick={() => setIsMenuOpen(false)} // Close sidebar when overlay is clicked
-            />
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-30"
+                onClick={() => setIsMenuOpen(false)} // Close sidebar when overlay is clicked
+              />
             </Wrapper>
           )}
         </AnimatePresence>

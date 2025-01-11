@@ -35,10 +35,11 @@ const Welcome: React.FC = () => {
             A Great Place to Serve Medical Care
           </h3>
           <p className="max-w-[600px]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-            placerat scelerisque tortor ornare ornare. Convallis felis vitae
-            tortor augue. Velit nascetur proin massa in. Consequat faucibus
-            porttitor enim et.
+            St Joseph&apos;s is a private healthcare facility dedicated to
+            providing quality medical services in a comfortable and modern
+            environment. We prioritize patient care and well-being, offering
+            accommodating admission rooms and a personalized experience to
+            ensure every visit is seamless and stress-free. 
           </p>
         </div>
         <Link

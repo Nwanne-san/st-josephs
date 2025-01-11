@@ -2,6 +2,7 @@ import React from "react";
 import Hero from "@/components/ui/Herosection";
 import Navbar from "@/components/layout/Navbar";
 import Contact from "../components/Contact";
+import Footer from "@/components/layout/Footer";
 
 function OurServices() {
   return (
@@ -14,6 +15,7 @@ function OurServices() {
           heading="Our Contacts"
         />
         <Contact/>
+        <Footer/>
       </div>
     </div>
   );

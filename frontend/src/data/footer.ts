@@ -8,29 +8,25 @@ export const links = [
     route: "/services",
   },
   {
-    name: "News",
-    route: "/blog",
-  },
-  {
     name: "About us",
     route: "aboutus",
   },
 ];
 export const contact_links = [
   {
-    name: "Call: (237) 681-812-255",
-    route: "tel:+2348104026825",
+    name: "Call: +(234) 906-674-1674",
+    route: "tel:+2349066741674",
   },
   {
     name: "Email: fildineesoe@gmail.com",
     route: "mailto:nnamaninwanne@gmail.com",
   },
   {
-    name: "Address: 0123 Some place",
+    name: "Address: New Anglican Road, Nsukka",
     route: "",
   },
   {
-    name: "Nigeria",
+    name: "Enugu state, Nigeria",
     route: "",
   },
 ];
